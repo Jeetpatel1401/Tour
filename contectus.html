@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Contact Us</title>
+
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Arial', sans-serif;
+      background-color: #0a0a0a;
+      color: #fff;
+      line-height: 1.6;
+      /* Improved default line height */
+    }
+
+    header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 20px 50px;
+      background: rgba(0, 0, 0, 0.85);
+      /* Slightly more opaque */
+      width: 100%;
+      top: 0;
+      z-index: 1000;
+      /* Consider adding position: sticky; or position: fixed; if you want a fixed header */
+      /* box-shadow: 0 2px 10px rgba(0,0,0,0.5); /* Optional: adds depth to header */
+    }
+
+    .logo-container {
+      display: flex;
+      align-items: center;
+    }
+
+    .logo-container img {
+      height: 40px;
+      margin-right: 10px;
+    }
+
+    header h1 {
+      font-size: 28px;
+      color: #ffcc00;
+      /* Logo text color to match theme */
+    }
+
+    nav a {
+      margin: 0 15px;
+      color: whitesmoke;
+      text-decoration: none;
+      font-weight: bold;
+      transition: color 0.3s ease;
+      cursor: pointer;
+    }
+
+    nav a:hover,
+    nav a.active-nav {
+      /* Style for active page link if needed */
+      color: #ffcc00;
+    }
+
+    header h1 {
+      font-size: 28px;
+      margin: 0;
+    }
+
+    .background {
+      background-color: #0a0a0a;
+    }
+
+    main {
+      text-align: center;
+      padding: 20px 20px 40px;
+      /* reduced top padding */
+    }
+
+    main h2 {
+      font-size: 42px;
+      margin-bottom: 30px;
+      color: white;
+    }
+
+    .cards {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 30px;
+    }
+
+    .card {
+      background: #ffd3ac;
+      padding: 30px;
+      width: 300px;
+      border-radius: 8px;
+      text-align: center;
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+      border-bottom: 4px solid #e0dcd5;
+    }
+
+    .card i {
+      font-size: 40px;
+      margin-bottom: 20px;
+      display: block;
+    }
+
+    .card h3 {
+      font-size: 20px;
+      margin-bottom: 10px;
+    }
+
+    .card p {
+      font-size: 15px;
+      color: #444;
+      margin-bottom: 20px;
+    }
+
+    @media (max-width: 700px) {
+      .cards {
+        flex-direction: column;
+        align-items: center;
+      }
+
+      main h2 {
+        font-size: 32px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <header>
+    <div class="logo-container">
+      <a href="Tour&Travel.html">
+        <img src="images/HomePage_Logo.png" alt="logo" />
+      </a>
+      <h1>Tour&Travel</h1>
+    </div>
+
+    <nav>
+      <a href="Tour&Travel.html">Home</a>
+      <a href="explore.html">Explore</a>
+    </nav>
+
+  </header>
+
+  <div class="background">
+    <main>
+      <h2>Contact us</h2>
+      <div class="cards">
+        <div class="card">
+          <i>📞</i>
+          <h3>Talk to a member of our team</h3>
+          <p>We’ll help you to find the best, affordable, and requirement-based packages for your trip.</p>
+          <p>Helpline: 000000000</p>
+          <p>Our team is always ready to assist you!</p>
+        </div>
+      </div>
+    </main>
+  </div>
+
+</body>
+
+</html>

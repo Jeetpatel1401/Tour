@@ -1,0 +1,472 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Booking Form</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
+        integrity="sha512-Fo3rlrZj/k7ujTnHg4CGR2D7kSs0v4LLanw2qksYuRlEzO+tcaEPQogQ0KaoGN26/zrn20ImR1DfuLWnOo7aBA=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #121212;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            padding: 2rem;
+            margin: 0;
+            color: #f0f0f0;
+        }
+
+        .form-container {
+            background: #212121;
+            color: #e0e0e0;
+            padding: 2.5rem;
+            border-radius: 12px;
+            width: 500px;
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.3);
+        }
+
+        h1 {
+            text-align: center;
+            margin-bottom: 2rem;
+            color: #bb86fc;
+            font-weight: 500;
+        }
+
+        form {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .form-row {
+            margin-bottom: 1.5rem;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.75rem;
+            align-items: center;
+        }
+
+        .form-row label {
+            width: 100%;
+            font-weight: bold;
+            color: #ccc;
+            margin-bottom: 0.3rem;
+            display: block;
+        }
+
+        input,
+        select {
+            flex: 1;
+            padding: 0.75rem;
+            border: 1px solid #555;
+            border-radius: 6px;
+            background-color: #333;
+            color: #e0e0e0;
+            transition: border-color 0.3s ease;
+        }
+
+        input:focus,
+        select:focus {
+            outline: none;
+            border-color: #bb86fc;
+            box-shadow: 0 0 0 0.2rem rgba(187, 134, 252, 0.25);
+        }
+
+        input[type="time"],
+        input[type="date"] {
+            width: calc(50% - 0.375rem);
+        }
+
+        span {
+            color: #ff6f6f;
+        }
+
+        small {
+            font-size: 0.85rem;
+            color: #999;
+            width: 100%;
+            margin-top: 0.3rem;
+            display: block;
+        }
+
+        button {
+            padding: 1rem 1.5rem;
+            background-color: #bb86fc;
+            color: #212121;
+            border: none;
+            font-size: 1.1rem;
+            border-radius: 8px;
+            cursor: pointer;
+            margin-top: 1.5rem;
+            transition: background-color 0.3s ease, transform 0.2s ease-in-out, box-shadow 0.3s ease;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            font-weight: 500;
+        }
+
+        button:hover {
+            background-color: #9c4aff;
+            transform: translateY(-2px);
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
+        }
+
+        select {
+            appearance: none;
+            background-image: url('data:image/svg+xml;charset=UTF-8,<svg fill="%23e0e0e0" viewBox="0 0 24 24"><path d="M7 10l5 5 5-5z"/></svg>');
+            background-repeat: no-repeat;
+            background-position: right 0.75rem center;
+            background-size: 1.1em;
+            padding-right: 2.5rem;
+        }
+
+        select::-ms-expand {
+            display: none;
+        }
+
+        .form-row label i {
+            margin-right: 0.5rem;
+            color: #888;
+        }
+
+        @media (max-width: 600px) {
+            .form-container {
+                width: 95%;
+                padding: 1.5rem;
+            }
+
+            .form-row {
+                flex-direction: column;
+                align-items: stretch;
+            }
+
+            input[type="time"],
+            input[type="date"] {
+                width: 100%;
+            }
+
+            .form-row label i {
+                margin-bottom: 0.3rem;
+            }
+        }
+
+        #success-message {
+            background-color: #4caf50;
+            color: white;
+            padding: 1rem;
+            border-radius: 8px;
+            margin-top: 1rem;
+            text-align: center;
+            display: none;
+        }
+
+        .progress-indicator {
+            display: none;
+            margin-bottom: 1rem;
+            padding: 0.5rem;
+            background-color: #444;
+            color: #eee;
+            border-radius: 6px;
+            text-align: center;
+            font-size: 0.9rem;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="form-container">
+        <h1><i class="fas fa-plane-departure"></i> Booking Form</h1>
+        <div class="progress-indicator">Step 1 of 1</div>
+        <form id="booking-form">
+            <div class="form-row">
+                <label for="firstName"><i class="fas fa-user"></i> Name<span class="required">*</span></label>
+                <input type="text" id="firstName" placeholder="First*" required />
+                <input type="text" placeholder="Last*" required />
+            </div>
+
+            <div class="form-row">
+                <label for="email"><i class="fas fa-envelope"></i> Email<span class="required">*</span></label>
+                <input type="email" id="email" placeholder="Email*" required />
+                <label for="phone"><i class="fas fa-phone"></i> Phone<span class="required">*</span></label>
+                <input type="tel" id="phone" placeholder="### ### ####" required />
+                <small>We will send you a copy of the completed booking form to your e-mail address.</small>
+            </div>
+
+            <div class="form-row">
+                <label for="departureDate"><i class="fas fa-calendar-alt"></i> Departure Date<span
+                        class="required">*</span></label>
+                <input type="date" id="departureDate" required />
+                <label for="departureTime"><i class="fas fa-clock"></i> Departure Time<span
+                        class="required">*</span></label>
+                <input type="time" id="departureTime" required />
+            </div>
+
+            <div class="form-row">
+                <label for="returnDate"><i class="fas fa-calendar-alt"></i> Return Date<span
+                        class="required">*</span></label>
+                <input type="date" id="returnDate" required />
+                <label for="returnTime"><i class="fas fa-clock"></i> Return Time<span class="required">*</span></label>
+                <input type="time" id="returnTime" required />
+            </div>
+
+            <div class="form-row">
+                <label for="passengers"><i class="fas fa-users"></i> Number of passengers<span
+                        class="required">*</span></label>
+                <select id="passengers" required>
+                    <option value="">*Please Select*</option>
+                    <option value="1">1</option>
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                    <option value="4">4+</option>
+                </select>
+            </div>
+
+            <div class="form-row">
+                <label for="tour-type"><i class="fas fa-compass"></i> Tour Type<span class="required">*</span></label>
+                <select id="tour-type" required>
+                    <option value="">*Please Select*</option>
+                    <option value="adventure">Adventure</option>
+                    <option value="wildlife">Wildlife</option>
+                    <option value="country">Country Tour</option>
+                </select>
+            </div>
+
+            <div class="form-row" id="country-filter-row" style="display: none;">
+                <label for="country-filter"><i class="fas fa-globe"></i> Country<span class="required">*</span></label>
+                <select id="country-filter">
+                    <option value="">*Please Select Country*</option>
+                </select>
+            </div>
+
+            <div id="package-checkboxes"></div>
+            <div id="selected-package-details" style="margin-top: 1rem;"></div>
+
+            <button type="submit"><i class="fas fa-check-circle"></i> Submit Booking</button>
+        </form>
+        <div id="success-message">Booking submitted successfully!</div>
+    </div>
+
+    <script>
+        // packages.js
+
+        const packages = [
+            // === Adventure Packages ===
+            { name: "ATV Ride + Water Rafting", type: "adventure", country: "Bali", description: "Thrilling ride and river adventure." },
+            { name: "Ayung River Rafting", type: "adventure", country: "Bali", description: "Scenic rapids through lush jungle." },
+            { name: "Kintamani Jeep Tour", type: "adventure", country: "Bali", description: "Off-road journey to volcanic views." },
+            { name: "Abseil down a waterfall", type: "adventure", country: "Australia", description: "Descend waterfalls in thrilling adventure." },
+            { name: "Skiing, Snowboarding and Snowshoeing", type: "adventure", country: "USA", description: "Winter sports fun in USA." },
+            { name: "Machu Picchu", type: "adventure", country: "Peru", description: "Ancient trails to mountain citadel." },
+            { name: "Walking the Cotswold Way", type: "adventure", country: "UK", description: "Scenic stroll through English countryside." },
+            { name: "Sail Panama to Galapagos Islands", type: "adventure", country: "Ecuador", description: "Ocean voyage to exotic islands." },
+
+            // === Wildlife Packages ===
+            { name: "Spot a snoozing koala", type: "wildlife", country: "Australia", description: "See koalas in wild habitat." },
+            { name: "Tanah Lot and North Bali Tour", type: "wildlife", country: "Bali", description: "Explore Bali’s lush natural beauty." },
+            { name: "Classic Borneo", type: "wildlife", country: "Malaysia", description: "Jungle trek with exotic wildlife." },
+            { name: "Fox Encounter", type: "wildlife", country: "USA", description: "Up-close experience with wild foxes." },
+
+            // === Country Tour Packages for 12 countries ===
+            // India
+            { name: "Golden Triangle Tour", type: "country", country: "India", description: "Delhi, Agra, Jaipur in one classic route. Price: 58,000" },
+            { name: "Kerala Backwaters Cruise", type: "country", country: "India", description: "Tranquil boat journey through lush Kerala. Price: 49,000" },
+            { name: "Rajasthan Royal Retreat", type: "country", country: "India", description: "Palaces, forts, and heritage hotels. Price: 67,000" },
+            { name: "Himalayan Escape", type: "country", country: "India", description: "Peaceful mountains and monasteries. Price: 55,000" },
+
+            // Thailand
+            { name: "Bangkok & Temples Tour", type: "country", country: "Thailand", description: "Experience cultural highlights of Bangkok. Price: 40,000" },
+            { name: "Phuket Island Retreat", type: "country", country: "Thailand", description: "Beach relaxation and water fun. Price: 52,000" },
+            { name: "Chiang Mai Explorer", type: "country", country: "Thailand", description: "Northern Thailand’s scenic charm. Price: 46,000" },
+            { name: "Thailand Grand Tour", type: "country", country: "Thailand", description: "Highlights of north and south. Price: 65,000" },
+
+            // UK
+            { name: "London & Countryside", type: "country", country: "UK", description: "From Big Ben to the Lake District. Price: 78,000" },
+            { name: "Scottish Highlands", type: "country", country: "UK", description: "Lochs, castles, and nature. Price: 69,000" },
+            { name: "Wales Heritage Trail", type: "country", country: "UK", description: "Castles and coastlines of Wales. Price: 62,000" },
+            { name: "UK Grand Tour", type: "country", country: "UK", description: "Full experience from south to north. Price: 84,000" },
+
+            // Sri Lanka
+            { name: "Cultural Triangle Tour", type: "country", country: "Sri Lanka", description: "Ancient cities and sacred sites. Price: 48,000" },
+            { name: "Sri Lanka Beach Getaway", type: "country", country: "Sri Lanka", description: "Relax at serene beaches. Price: 45,000" },
+            { name: "Hill Country & Tea Estates", type: "country", country: "Sri Lanka", description: "Lush green hills and plantations. Price: 51,000" },
+            { name: "Wildlife & Heritage Tour", type: "country", country: "Sri Lanka", description: "Best of nature and culture. Price: 57,000" },
+
+            // Portugal
+            { name: "Lisbon & Sintra", type: "country", country: "Portugal", description: "Historic streets and fairytale castles. Price: 59,000" },
+            { name: "Douro Valley Wine Tour", type: "country", country: "Portugal", description: "Vineyard trails and river cruises. Price: 64,000" },
+            { name: "Portugal Coastal Escape", type: "country", country: "Portugal", description: "Sun, sand, and seafood. Price: 60,000" },
+            { name: "Discover Portugal", type: "country", country: "Portugal", description: "Full tour of Portugal’s highlights. Price: 70,000" },
+
+            // France
+            { name: "Paris & Loire Valley", type: "country", country: "France", description: "Romance, art, and châteaux. Price: 75,000" },
+            { name: "French Riviera Escape", type: "country", country: "France", description: "Sun-soaked beaches and style. Price: 78,000" },
+            { name: "Alsace Wine Trail", type: "country", country: "France", description: "Scenic vineyards and towns. Price: 63,000" },
+            { name: "Classic France Tour", type: "country", country: "France", description: "Best of urban and rural France. Price: 82,000" },
+
+            // Greece
+            { name: "Athens & Delphi", type: "country", country: "Greece", description: "Ancient ruins and legends. Price: 54,000" },
+            { name: "Greek Island Hopping", type: "country", country: "Greece", description: "Santorini, Mykonos and more. Price: 79,000" },
+            { name: "Crete Discovery", type: "country", country: "Greece", description: "Culture, beaches, and food. Price: 66,000" },
+            { name: "Historic Greece Grand Tour", type: "country", country: "Greece", description: "Myths, sites, and heritage. Price: 85,000" },
+
+            // USA
+            { name: "New York to LA", type: "country", country: "USA", description: "Iconic cities coast-to-coast. Price: 120,000" },
+            { name: "Grand Canyon Adventure", type: "country", country: "USA", description: "Majestic canyon experiences. Price: 72,000" },
+            { name: "Florida Beaches & Parks", type: "country", country: "USA", description: "Fun in the sun and wildlife. Price: 68,000" },
+            { name: "Deep South Discovery", type: "country", country: "USA", description: "Music, food, and culture. Price: 77,000" },
+
+            // Japan
+            { name: "Tokyo & Mt. Fuji", type: "country", country: "Japan", description: "Modern meets tradition. Price: 95,000" },
+            { name: "Kyoto Temples Tour", type: "country", country: "Japan", description: "Zen gardens and shrines. Price: 86,000" },
+            { name: "Hokkaido Nature Escape", type: "country", country: "Japan", description: "Wild beauty and outdoor fun. Price: 88,000" },
+            { name: "Classic Japan", type: "country", country: "Japan", description: "Top cities and attractions. Price: 102,000" },
+
+            // Italy
+            { name: "Rome, Venice & Florence", type: "country", country: "Italy", description: "Italy’s cultural triangle. Price: 93,000" },
+            { name: "Amalfi Coast Escape", type: "country", country: "Italy", description: "Dramatic coastlines and towns. Price: 85,000" },
+            { name: "Tuscany Wine & Art", type: "country", country: "Italy", description: "Rolling hills and Renaissance. Price: 90,000" },
+            { name: "Italy Grand Tour", type: "country", country: "Italy", description: "A journey through Italy’s best. Price: 110,000" },
+
+            // Bali
+            { name: "Discover Bali (Inclusive Flights)", type: "country", country: "Bali", description: "Explore the cultural heart of Bali, round-trip flights included. Price: 76,000" },
+            { name: "Ubud & Rice Terraces", type: "country", country: "Bali", description: "Tour Bali's tranquil Ubud and scenic rice paddies. Price: 58,000" },
+            { name: "Bali Beach Retreat", type: "country", country: "Bali", description: "Relaxing beach-side resort experience in Bali. Price: 62,000" },
+            { name: "Volcano & Temple Journey", type: "country", country: "Bali", description: "Experience Bali's active volcanoes and sacred temples. Price: 69,000" },
+
+            // Australia
+            { name: "Sydney & Blue Mountains", type: "country", country: "Australia", description: "City sights and natural wonders. Price: 89,000" },
+            { name: "Great Barrier Reef Explorer", type: "country", country: "Australia", description: "Marine life and coral beauty. Price: 92,000" },
+            { name: "Outback Adventure", type: "country", country: "Australia", description: "Red sands and ancient culture. Price: 96,000" },
+            { name: "Australia Grand Tour", type: "country", country: "Australia", description: "All-around Aussie experience. Price: 110,000" }
+        ];
+
+        // === DOM Handling & Filtering ===
+
+        const tourTypeSelect = document.getElementById("tour-type");
+        const countrySelect = document.getElementById("country-filter");
+        const countryRow = document.getElementById("country-filter-row");
+        const checkboxContainer = document.getElementById("package-checkboxes");
+        const resultContainer = document.getElementById("selected-package-details");
+        const bookingForm = document.getElementById("booking-form");
+        const successMessage = document.getElementById("success-message");
+
+        tourTypeSelect.addEventListener("change", function () {
+            const selectedType = this.value;
+            countrySelect.innerHTML = '<option value="">*Please Select Country*</option>';
+            checkboxContainer.innerHTML = "";
+            resultContainer.innerHTML = "";
+
+            if (!selectedType) {
+                countryRow.style.display = "none";
+                return;
+            }
+
+            const countries = [...new Set(packages.filter(p => p.type === selectedType).map(p => p.country))];
+            countries.forEach(country => {
+                const option = document.createElement("option");
+                option.value = country;
+                option.textContent = country;
+                countrySelect.appendChild(option);
+            });
+
+            countryRow.style.display = "flex";
+        });
+
+        countrySelect.addEventListener("change", function () {
+            const selectedType = tourTypeSelect.value;
+            const selectedCountry = this.value;
+            checkboxContainer.innerHTML = "";
+            resultContainer.innerHTML = "";
+
+            if (!selectedCountry) return;
+
+            const filteredPackages = packages.filter(
+                p => p.type === selectedType && p.country === selectedCountry
+            );
+
+            const heading = document.createElement("p");
+            heading.textContent = `Select a ${selectedType} package in ${selectedCountry}:`;
+            heading.style.fontWeight = "bold";
+            heading.style.marginBottom = "0.5rem";
+            heading.style.color = "#ccc"; // Added color for better visibility
+            checkboxContainer.appendChild(heading);
+
+            filteredPackages.forEach(pkg => {
+                const wrapper = document.createElement("div");
+                wrapper.style.marginBottom = "0.75rem"; // Added some spacing
+
+                const checkbox = document.createElement("input");
+                checkbox.type = "checkbox";
+                checkbox.value = pkg.name;
+                checkbox.id = pkg.name;
+                checkbox.addEventListener("change", function () {
+                    showSelectedPackages(selectedType, selectedCountry);
+                });
+
+                const label = document.createElement("label");
+                label.setAttribute("for", pkg.name);
+                label.textContent = pkg.name;
+                label.style.marginLeft = "0.5rem";
+                label.style.color = "#eee";
+
+                wrapper.appendChild(checkbox);
+                wrapper.appendChild(label);
+                checkboxContainer.appendChild(wrapper);
+            });
+        });
+
+        function showSelectedPackages(selectedType, selectedCountry) {
+            const selectedCheckboxes = Array.from(
+                checkboxContainer.querySelectorAll("input[type='checkbox']:checked")
+            );
+
+            const selectedNames = selectedCheckboxes.map(cb => cb.value);
+
+            const selectedPackages = packages.filter(
+                p => selectedNames.includes(p.name) && p.type === selectedType && p.country === selectedCountry
+            );
+
+            resultContainer.innerHTML = "";
+
+            if (selectedPackages.length === 0) {
+                resultContainer.innerHTML = "<p style='color:#999;'>No package selected.</p>";
+                return;
+            }
+
+            const heading = document.createElement("h4");
+            heading.textContent = "Selected Packages:";
+            heading.style.marginBottom = "0.75rem";
+            heading.style.color = "#bb86fc";
+            resultContainer.appendChild(heading);
+
+            selectedPackages.forEach(pkg => {
+                const div = document.createElement("div");
+                div.style.background = "#333";
+                div.style.color = "#eee";
+                div.style.padding = "1rem";
+                div.style.marginBottom = "0.75rem";
+                div.style.borderRadius = "8px";
+                div.innerHTML = `<h3>${pkg.name}</h3><p style='margin-top: 0.5rem;'>${pkg.description}</p>`;
+                resultContainer.appendChild(div);
+            });
+        }
+
+        bookingForm.addEventListener("submit", function (e) {
+            e.preventDefault();
+
+            console.log("Booking submitted!");
+            bookingForm.style.display = "none";
+            successMessage.style.display = "block";
+            setTimeout(() => {
+                bookingForm.style.display = "flex";
+                successMessage.style.display = "none";
+                bookingForm.reset();
+                tourTypeSelect.dispatchEvent(new Event('change'));
+            }, 3000);
+        });
+    </script>
+</body>
+
+</html>

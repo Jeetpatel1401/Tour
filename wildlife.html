@@ -1,0 +1,378 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Experiences</title>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial;
+            background-color: white;
+            color: white;
+        }
+
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 50px;
+            background: rgb(0, 0, 0);
+            width: 100%;
+            top: 20px;
+        }
+
+        .logo-container {
+            display: flex;
+            align-items: center;
+        }
+
+        .logo-container img {
+            height: 40px;
+            margin-right: 10px;
+        }
+
+        header h1 {
+            font-size: 28px;
+        }
+
+        nav a {
+            margin: 0 15px;
+            color: white;
+            text-decoration: none;
+            font-weight: bold;
+            transition: color 0.3s;
+        }
+
+        nav a:hover {
+            color: #ffcc00;
+        }
+
+        body {
+            font-family: 'Segoe UI', sans-serif;
+            margin: 0;
+            background: #1a1a1a;
+            color: white;
+        }
+
+        .packages-section {
+            text-align: center;
+            padding: 30px 20px;
+        }
+
+        .packages-section h1 {
+            font-size: 36px;
+            margin-bottom: 20px;
+            color: white;
+        }
+
+        .packages {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 20px;
+        }
+
+        .package-card {
+            width: 270px;
+            border-radius: 10px;
+            padding: 20px;
+            color: #F0F0F0;
+            text-align: left;
+            box-shadow: 0 4px 14px rgba(0, 0, 0, 0.1);
+            display: flex;
+            /* Enable flexbox for content alignment */
+            flex-direction: column;
+            /* Stack content vertically */
+        }
+
+        .package-card img {
+            width: 100%;
+            height: auto;
+            border-radius: 12px 12px 0 0;
+            margin-bottom: 10px;
+            /* Add some space below the image */
+        }
+
+        .package-card h2 {
+            font-size: 20px;
+            margin-bottom: 14px;
+        }
+
+        .package-card p {
+            margin: 8px 0;
+            line-height: 1.5;
+        }
+
+        .book-btn {
+            background-color: #000000;
+            color: #FFD369;
+            border: none;
+            padding: 12px 25px;
+            font-size: 1em;
+            border-radius: 8px;
+            cursor: pointer;
+            width: 100%;
+            transition: background-color 0.3s ease;
+            margin-top: auto;
+            /* Push the button to the bottom */
+        }
+
+
+        .price {
+            font-size: 22px;
+            font-weight: bold;
+            margin-top: 12px;
+        }
+
+        .time {
+            font-size: 16px;
+            margin-top: 6px;
+        }
+
+        .blue {
+            background: #3B3C55;
+        }
+
+        .sky {
+            background: #3D6E70;
+        }
+
+        .green {
+            background: #DFA878;
+        }
+
+        .light-purple {
+            background: #AFAAB9;
+        }
+
+        footer {
+            margin-top: 50px;
+            padding: 30px 20px;
+            background: #333;
+            color: #fff;
+            text-align: center;
+        }
+
+        footer h3 {
+            margin-bottom: 12px;
+        }
+
+        footer p {
+            margin: 6px 0;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .packages {
+                flex-direction: column;
+                align-items: center;
+            }
+        }
+
+        .book-btn:hover {
+            background-color: #333;
+        }
+
+        footer {
+            background: #333;
+            color: #ccc;
+            padding: 40px;
+            text-align: center;
+        }
+
+        .socials img {
+            height: 24px;
+            margin: 0 10px;
+            filter: grayscale(1);
+            transition: filter 0.3s;
+        }
+
+        .socials img:hover {
+            filter: grayscale(0);
+        }
+
+        .card-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 20px;
+            padding: 30px 20px;
+        }
+
+        .experience-card {
+            background: #2c2c2c;
+            color: #f0f0f0;
+            border-radius: 12px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+            overflow: hidden;
+            width: 280px;
+            display: flex;
+            flex-direction: column;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .experience-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 18px rgba(0, 0, 0, 0.3);
+        }
+
+        .experience-card img {
+            width: 100%;
+            height: 180px;
+            object-fit: cover;
+        }
+
+        .experiences h2 {
+            text-align: center;
+            font-size: 34px;
+            margin: 40px 0 20px;
+            color: #FFD369;
+        }
+
+
+        .card-content {
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            flex-grow: 1;
+        }
+
+        .card-content h3 {
+            margin: 6px 0;
+            font-size: 20px;
+            color: #FFD369;
+        }
+
+        .card-content p {
+            margin: 6px 0;
+            line-height: 1.4;
+        }
+
+        .book-button {
+            margin-top: 14px;
+            background-color: #FFD369;
+            color: #1a1a1a;
+            text-decoration: none;
+            text-align: center;
+            padding: 10px 20px;
+            border-radius: 8px;
+            font-weight: bold;
+            transition: background-color 0.3s ease;
+        }
+
+        .book-button:hover {
+            background-color: #e0b85c;
+        }
+
+        .card-content {
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            flex-grow: 1;
+        }
+
+        .card-content p {
+            margin: 6px 0;
+            line-height: 1.4;
+            flex-grow: 1;
+        }
+
+        .book-button {
+            margin-top: auto;
+            background-color: #FFD369;
+            color: #1a1a1a;
+            text-decoration: none;
+            text-align: center;
+            padding: 12px 20px;
+            border-radius: 8px;
+            font-weight: bold;
+            transition: background-color 0.3s ease;
+            display: block;
+        }
+    </style>
+
+</head>
+
+<body>
+    <header>
+        <div class="logo-container">
+            <a href="Tour&Travel.html"><img src="images/HomePage_Logo.png" alt="logo" /></a>
+            <h2>Tour&Travel</h2>
+        </div>
+        <nav>
+            <a href="aboutus.html">About</a>
+        </nav>
+    </header>
+
+    <section class="experiences">
+        <h2>Enjoy Wonderful wildlife Experiences</h2>
+        <div class="card-container">
+
+            <div class="experience-card">
+                <img src="images/aus-wild-ad.webp" alt="Tour">
+                <div class="card-content">
+                    <h3>Australia</h3>
+                    <h3>Spot a snoozing koala</h3>
+                    <p> ✔️ Australia’s eastern eucalypt forests are home turf for one of our country’s sleepiest
+                        residents — the koala.</p>
+                    <p> ✔️ Here, a 2km (1.2mi) Koala Trail winds beneath towering gum trees.</p>
+                    <a href="book.html" class="book-button">Book Now</a>
+                </div>
+            </div>
+
+            <div class="experience-card">
+                <img src="images/bali-wild-adv.jpg" alt="Tour">
+                <div class="card-content">
+                    <h3>Bali</h3>
+                    <h3>Tanah Lot and North Bali Tour: Scenic Journey</h3>
+                    <p> ✔️ Ulun Danu Bratan Temple.</p>
+                    <p> ✔️ Buyan Lake.</p>
+                    <p> ✔️ Tamblingan Lake.</p>
+                    <p> ✔️ Banyumala Twin Waterfalls.</p>
+                    <p> ✔️ Jatiluwih Green Land.</p>
+                    <p> ✔️ Pura Batu Bolong</p>
+                    <p> ✔️ Tanah Lot Temple</p>
+                    <a href="book.html" class="book-button">Book Now</a>
+                </div>
+            </div>
+
+            <div class="experience-card">
+                <img src="images/us-wild-ad.webp" alt="Tour">
+                <div class="card-content">
+                    <h3>Malaysia</h3>
+                    <h3>Classic Borneo</h3>
+                    <p> ✔️ Sandakan.</p>
+                    <p> ✔️ Sandakan,Kinabatangan River.</p>
+                    <p> ✔️ Kinabatangan.</p>
+                    <p> ✔️ Kampung Kiau.</p>
+                    <p> ✔️ Manukan Island.</p>
+                    <p> ✔️ Kota Kinabalu.</p>
+                    <a href="book.html" class="book-button">Book Now</a>
+                </div>
+            </div>
+
+            <div class="experience-card">
+                <img src="images/aus-wild-ad.webp" alt=" tour">
+                <div class="card-content">
+                    <h3>USA</h3>
+                    <h3>Fox Encounter</h3>
+                    <p> ✔️ Connect with Animal Ambassadors during this unique opportunity to get up-close and personal!
+                        Encounter proceeds directly benefit animal care and conservation efforts around the world.</p>
+                    <p> ✔️ Feeding and photos are allowed, but touching is only permitted with staff guidance.</p>
+                </div>
+                <a href="book.html" class="book-button">Book Now</a>
+            </div>
+
+        </div>
+    </section>
+</body>
+
+</html>

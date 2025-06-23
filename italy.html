@@ -1,0 +1,302 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Website Packages | Satej Infotech</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<style>
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+    }
+
+    body {
+        font-family: Arial;
+        background-color: white;
+        color: white;
+    }
+
+    header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 20px 50px;
+        background: rgb(0, 0, 0);
+        width: 100%;
+        top: 20px;
+    }
+
+    .logo-container {
+        display: flex;
+        align-items: center;
+    }
+
+    .logo-container img {
+        height: 40px;
+        margin-right: 10px;
+    }
+
+    header h1 {
+        font-size: 28px;
+    }
+
+    nav a {
+        margin: 0 15px;
+        color: white;
+        text-decoration: none;
+        font-weight: bold;
+        transition: color 0.3s;
+    }
+
+    nav a:hover {
+        color: #ffcc00;
+    }
+
+    body {
+        font-family: 'Segoe UI', sans-serif;
+        margin: 0;
+        background: #1a1a1a;
+        color: white;
+    }
+
+    .packages-section {
+        text-align: center;
+        padding: 30px 20px;
+    }
+
+    .packages-section h1 {
+        font-size: 36px;
+        margin-bottom: 20px;
+        color: white;
+    }
+
+    .packages {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 20px;
+    }
+
+    .package-card {
+        width: 270px;
+        border-radius: 10px;
+        padding: 20px;
+        color: #F0F0F0;
+        text-align: left;
+        box-shadow: 0 4px 14px rgba(0, 0, 0, 0.1);
+        display: flex;
+        /* Enable flexbox for content alignment */
+        flex-direction: column;
+        /* Stack content vertically */
+    }
+
+    .package-card img {
+        width: 100%;
+        height: auto;
+        border-radius: 12px 12px 0 0;
+        margin-bottom: 10px;
+        /* Add some space below the image */
+    }
+
+    .package-card h2 {
+        font-size: 20px;
+        margin-bottom: 14px;
+    }
+
+    .package-card p {
+        margin: 8px 0;
+        line-height: 1.5;
+    }
+
+    .book-btn {
+        background-color: #000000;
+        color: #FFD369;
+        border: none;
+        padding: 12px 25px;
+        font-size: 1em;
+        border-radius: 8px;
+        cursor: pointer;
+        width: 100%;
+        transition: background-color 0.3s ease;
+        margin-top: auto;
+        /* Push the button to the bottom */
+    }
+
+
+    .price {
+        font-size: 22px;
+        font-weight: bold;
+        margin-top: 12px;
+    }
+
+    .time {
+        font-size: 16px;
+        margin-top: 6px;
+    }
+
+    .blue {
+        background: #3B3C55;
+    }
+
+    .sky {
+        background: #3D6E70;
+    }
+
+    .green {
+        background: #DFA878;
+    }
+
+    .light-purple {
+        background: #AFAAB9;
+    }
+
+    footer {
+        margin-top: 50px;
+        padding: 30px 20px;
+        background: #333;
+        color: #fff;
+        text-align: center;
+    }
+
+    footer h3 {
+        margin-bottom: 12px;
+    }
+
+    footer p {
+        margin: 6px 0;
+    }
+
+    /* Responsive */
+    @media (max-width: 768px) {
+        .packages {
+            flex-direction: column;
+            align-items: center;
+        }
+    }
+
+    .book-btn:hover {
+        background-color: #333;
+    }
+
+    footer {
+        background: #333;
+        color: #ccc;
+        padding: 40px;
+        text-align: center;
+    }
+
+    .socials img {
+        height: 24px;
+        margin: 0 10px;
+        filter: grayscale(1);
+        transition: filter 0.3s;
+    }
+
+    .socials img:hover {
+        filter: grayscale(0);
+    }
+</style>
+
+<body>
+
+    <header>
+        <div class="logo-container">
+            <a href="Tour&Travel.html"><img src="images/HomePage_Logo.png" alt="logo" /></a>
+            <h2>Tour&Travel</h2>
+        </div>
+        <nav>
+            <a href="Tour&Travel.html">Home</a>
+            <a href="aboutus.html">Services</a>
+        </nav>
+    </header>
+
+    <section class="packages-section">
+        <h1>Italy PACKAGES</h1>
+        <div class="packages">
+
+            <div class="package-card blue">
+                <img src="./images/Packages_images/ROME_CITY.jpeg" alt="Italy-packages">
+                <h2>Rome City Break</h2>
+                <p>✔️ 4 Days/3 Nights</p>
+                <p>✔️ Immersing yourself in the historical heart of Italy.</p>
+                <p>✔️ Rome (including Vatican City).</p>
+                <p>&#128967; Guided tours of the Colosseum.</p>
+                <p>&#128967; Roman Forum.</p>
+                <p>&#128967; Palatine Hill.</p>
+                <p>&#128967; Vatican City.</p>
+                <p>&#128967; St. Peter's Basilica, Vatican Museums, Sistine Chapel.</p>
+                <p>&#128967; Trevi Fountain.</p>
+                <p>&#128967; The Pantheon.</p>
+                <p class="price"><strong>₹90,000</strong></p>
+                <button class="book-btn" onclick="window.location.href='book.html'">Book Now</button>
+            </div>
+
+            <div class="package-card sky">
+                <img src="./images/Packages_images/Florence & Pisa.jpeg" alt="Italy-packages">
+                <h2> Florence & Pisa Glimpse</h2>
+                <p>✔️ 4 Days/3 Nights</p>
+                <p>✔️ Renaissance art, architecture, and the iconic Leaning Tower.</p>
+                <p>✔️ Florence, Pisa (day trip).</p>
+                <p>&#128967; Florence.</p>
+                <p>&#128967; Guided tours of Florence</p>
+                <p>&#128967; Duomo</p>
+                <p>&#128967; Uffizi Gallery</p>
+                <p>&#128967; Accademia Gallery to see Michelangelo's David</p>
+                <p>&#128967; Ponte Vecchio</p>
+                <p>&#128967; Palazzo Pitti.</p>
+                <p>&#128967; A day trip to Pisa to see the Leaning Tower and Piazza dei Miracoli.</p>
+                <p class="price"><strong>₹85,000</strong></p>
+                <button class="book-btn" onclick="window.location.href='book.html'">Book Now</button>
+            </div>
+
+            <div class="package-card green">
+                <img src="./images/Packages_images/Venice, Italy.jpeg" alt="Italy-packages">
+                <h2>Venice Short Escape</h2>
+                <p>✔️ 4 Days/3 Nights</p>
+                <p>✔️ The unique charm and waterways of the "Floating City.</p>
+                <p>✔️ Venice (including Murano and Burano islands)</p>
+                <p>&#128967; Accommodation in Venice.</p>
+                <p>&#128967; Guided walking tour of Venice: St. Mark's Square, St. Mark's Basilica, Doge's Palace,
+                    Rialto Bridge.</p>
+                <p>&#128967; A boat trip to Murano (famous for glass blowing) and Burano (known for its colorful houses
+                    and lacemaking).</p>
+                <p>&#128967; Gondola ride, cicchetti (Venetian tapas) tour, or a visit to the Peggy Guggenheim
+                    Collection.</p>
+                <p class="price"><strong>₹60,000</strong></p>
+                <button class="book-btn" onclick="window.location.href='book.html'">Book Now</button>
+            </div>
+
+            <div class="package-card light-purple">
+                <img src="./images/Packages_images/Naples, Sorrento.jpeg" alt="Italy-packages">
+                <h2>Naples & Amalfi Coast Taster</h2>
+                <p>✔️ 4 Days/3 Nights</p>
+                <p>✔️ Southern Italy's vibrant city and stunning coastal scenery.</p>
+                <p>✔️ Naples, Sorrento (as a base for exploring the Amalfi Coast).</p>
+                <p>&#128967; Accommodation in Naples or Sorrento.</p>
+                <p>&#128967; Airport transfers (to/from Naples Airport).</p>
+                <p>&#128967; A guided tour of Naples' historical center. </p>
+                <p>&#128967; A day trip along the Amalfi Coast, visiting picturesque towns like Positano and Amalfi (transportation by bus or private car).</p>
+                <p>&#128967; Visit to Pompeii (near Naples), a boat trip to Capri, or a pizza-making class in Naples.</p>
+                <p class="price"><strong>₹65,000</strong></p>
+                <button class="book-btn" onclick="window.location.href='book.html'">Book Now</button>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <p>Contact us at: support@travelwithus.com | +971 123 456 789</p>
+        <div class="socials">
+            <a href="https://www.facebook.com"><img src="./images/facebook.png" alt="Facebook" /></a>
+            <a href="https://www.instagram.com"><img src="images/instagram.png" alt="Instagram" /></a>
+            <a href="https://www.twitter.com"><img src="images/social_13051786.png" alt="Twitter" /></a>
+        </div>
+        <p>&copy; 2025 Tours Website. All rights reserved.</p>
+    </footer>
+
+</body>
+
+</html>

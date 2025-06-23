@@ -1,0 +1,131 @@
+import React from "react";
+
+const Loader = () => (
+  <div style={overlayStyle} role="alert" aria-live="assertive" aria-label="Loading">
+    <div style={spinnerGlowStyle} />
+    <div style={dotsContainerStyle}>
+      <span style={{ ...dotStyle, animationDelay: "0s" }} />
+      <span style={{ ...dotStyle, animationDelay: "0.2s" }} />
+      <span style={{ ...dotStyle, animationDelay: "0.4s" }} />
+    </div>
+    <div style={loaderTextStyle}>Loading...</div>
+  </div>
+);
+
+const overlayStyle = {
+  position: "fixed",
+  top: 0,
+  left: 0,
+  width: "100vw",
+  height: "100vh",
+  backgroundColor: "rgba(255, 255, 255, 0.85)",
+  display: "flex",
+  flexDirection: "column",
+  justifyContent: "center",
+  alignItems: "center",
+  zIndex: 9999,
+  fontFamily: "'Segoe UI', Tahoma, Geneva, Verdana, sans-serif",
+};
+
+const spinnerGlowStyle = {
+  width: 70,
+  height: 70,
+  borderRadius: "50%",
+  border: "8px solid #007bff",
+  borderTopColor: "transparent",
+  animation: "spin 1.2s linear infinite",
+  boxShadow:
+    "0 0 10px 2px rgba(0, 123, 255, 0.6), 0 0 20px 4px rgba(0, 123, 255, 0.3)",
+};
+
+const dotsContainerStyle = {
+  display: "flex",
+  justifyContent: "center",
+  marginTop: 16,
+  gap: 10,
+};
+
+const dotStyle = {
+  width: 14,
+  height: 14,
+  borderRadius: "50%",
+  backgroundColor: "#007bff",
+  animation: "bounce 1.2s infinite ease-in-out",
+};
+
+const loaderTextStyle = {
+  marginTop: 16,
+  fontSize: 22,
+  fontWeight: "700",
+  color: "#007bff",
+};
+
+const styleSheet = `
+@keyframes spin {
+  0% { transform: rotate(0deg);}
+  100% { transform: rotate(360deg);}
+}
+
+@keyframes bounce {
+  0%, 80%, 100% {
+    transform: scale(0);
+    opacity: 0.3;
+  }
+  40% {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+`;
+
+export default function App() {
+  const [loading, setLoading] = React.useState(false);
+
+  React.useEffect(() => {
+    // Inject keyframes styles dynamically
+    const style = document.createElement("style");
+    style.innerHTML = styleSheet;
+    document.head.appendChild(style);
+    return () => {
+      document.head.removeChild(style);
+    };
+  }, []);
+
+  return (
+    <div
+      style={{
+        height: "100vh",
+        display: "flex",
+        justifyContent: "center",
+        alignItems: "center",
+        flexDirection: "column",
+        gap: 20,
+        fontFamily: "'Segoe UI', Tahoma, Geneva, Verdana, sans-serif",
+      }}
+    >
+      <button
+        onClick={() => {
+          setLoading(true);
+          setTimeout(() => setLoading(false), 2500);
+        }}
+        style={{
+          padding: "14px 28px",
+          fontSize: 20,
+          borderRadius: 8,
+          border: "none",
+          backgroundColor: "#007bff",
+          color: "white",
+          cursor: "pointer",
+          boxShadow: "0 4px 12px rgba(0, 123, 255, 0.6)",
+          transition: "background-color 0.3s ease",
+        }}
+        onMouseEnter={(e) => (e.currentTarget.style.backgroundColor = "#0056b3")}
+        onMouseLeave={(e) => (e.currentTarget.style.backgroundColor = "#007bff")}
+      >
+        Simulate Loading
+      </button>
+
+      {loading && <Loader />}
+    </div>
+  );
+}

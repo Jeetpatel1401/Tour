@@ -1,0 +1,298 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Website Packages | Satej Infotech</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<style>
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+    }
+
+    body {
+        font-family: Arial;
+        background-color: white;
+        color: white;
+    }
+
+    header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 20px 50px;
+        background: rgb(0, 0, 0);
+        width: 100%;
+        top: 20px;
+    }
+
+    .logo-container {
+        display: flex;
+        align-items: center;
+    }
+
+    .logo-container img {
+        height: 40px;
+        margin-right: 10px;
+    }
+
+    header h1 {
+        font-size: 28px;
+    }
+
+    nav a {
+        margin: 0 15px;
+        color: white;
+        text-decoration: none;
+        font-weight: bold;
+        transition: color 0.3s;
+    }
+
+    nav a:hover {
+        color: #ffcc00;
+    }
+
+    body {
+        font-family: 'Segoe UI', sans-serif;
+        margin: 0;
+        background: #1a1a1a;
+        color: white;
+    }
+
+    .packages-section {
+        text-align: center;
+        padding: 30px 20px;
+    }
+
+    .packages-section h1 {
+        font-size: 36px;
+        margin-bottom: 20px;
+        color: white;
+    }
+
+    .packages {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 20px;
+    }
+
+    .package-card {
+        width: 270px;
+        border-radius: 10px;
+        padding: 20px;
+        color: #F0F0F0;
+        text-align: left;
+        box-shadow: 0 4px 14px rgba(0, 0, 0, 0.1);
+        display: flex; /* Enable flexbox for content alignment */
+        flex-direction: column; /* Stack content vertically */
+    }
+
+    .package-card img {
+        width: 100%;
+        height: auto;
+        border-radius: 12px 12px 0 0;
+        margin-bottom: 10px; /* Add some space below the image */
+    }
+
+    .package-card h2 {
+        font-size: 20px;
+        margin-bottom: 14px;
+    }
+
+    .package-card p {
+        margin: 8px 0;
+        line-height: 1.5;
+    }
+
+    .book-btn {
+        background-color: #000000;
+        color: #FFD369;
+        border: none;
+        padding: 12px 25px;
+        font-size: 1em;
+        border-radius: 8px;
+        cursor: pointer;
+        width: 100%;
+        transition: background-color 0.3s ease;
+        margin-top: auto; /* Push the button to the bottom */
+    }
+
+
+    .price {
+        font-size: 22px;
+        font-weight: bold;
+        margin-top: 12px;
+    }
+
+    .time {
+        font-size: 16px;
+        margin-top: 6px;
+    }
+
+    .blue {
+        background: #3B3C55;
+    }
+
+    .sky {
+        background: #3D6E70
+        ;
+    }
+
+    .green {
+        background: #DFA878;
+    }
+
+    .light-purple {
+        background: #AFAAB9;
+    }
+
+    footer {
+        margin-top: 50px;
+        padding: 30px 20px;
+        background: #333;
+        color: #fff;
+        text-align: center;
+    }
+
+    footer h3 {
+        margin-bottom: 12px;
+    }
+
+    footer p {
+        margin: 6px 0;
+    }
+
+    /* Responsive */
+    @media (max-width: 768px) {
+        .packages {
+            flex-direction: column;
+            align-items: center;
+        }
+    }
+
+    .book-btn:hover {
+        background-color: #333;
+    }
+
+    footer {
+        background: #333;
+        color: #ccc;
+        padding: 40px;
+        text-align: center;
+    }
+
+    .socials img {
+        height: 24px;
+        margin: 0 10px;
+        filter: grayscale(1);
+        transition: filter 0.3s;
+    }
+
+    .socials img:hover {
+        filter: grayscale(0);
+    }
+</style>
+
+<body>
+
+    <header>
+        <div class="logo-container">
+            <a href="Tour&Travel.html"><img src="images/HomePage_Logo.png" alt="logo" /></a>
+            <h2>Tour&Travel</h2>
+        </div>
+        <nav>
+            <a href="Tour&Travel.html">Home</a>
+            <a href="aboutus.html">Service</a>
+        </nav>
+    </header>
+
+    <section class="packages-section">
+        <h1>Sri-Lanka Packages</h1>
+        <div class="packages">
+
+            <div class="package-card blue">
+                <img src="./images/Packages_images/viajes personalizados para viajes a Sri Lanka….jpeg" alt="srilanka-packages">
+                <h2> Cultural Triangle Highlights</h2>
+                <p>✔️ 4 Days / 3 Nights</p>
+                <p>✔️ Ancient history, cultural heritage, and iconic landmarks.</p>
+                <p>✔️ Sigiriya, Polonnaruwa, Dambulla.</p>
+                <p>&#128967; Accommodation in comfortable hotels in the Cultural Triangle area.</p>
+                <p>&#128967; Airport transfers to and from Colombo.</p>
+                <p>&#128967; Transportation in an air-conditioned private vehicle with an English-speaking driver/guide.</p>
+                <p>&#128967; Entrance fees to Sigiriya Rock Fortress, Polonnaruwa ancient city, and Dambulla Cave Temple (costs can vary, factor these in).</p>
+                <p>&#128967; Visit to a spice garden. </p>
+                <p class="price"><strong>₹50,000</strong></p>
+                <button class="book-btn" onclick="window.location.href='book.html'">Book Now</button>
+            </div>
+
+            <div class="package-card sky">
+                <img src="./images/Packages_images/Polonnaruwa, Sri Lanka.jpeg" alt="srilanka-packages">
+                <h2> Kandy & Nuwara Eliya Escape</h2>
+                <p>✔️ 4 Days / 3 Nights</p>
+                <p>✔️ Scenic beauty, tea plantations, and colonial charm.</p>
+                <p>✔️ Kandy, Nuwara Eliya.</p>
+                <p>&#128967; Accommodation in hotels with scenic views in Kandy and Nuwara Eliya.</p>
+                <p>&#128967; Visit to the Temple of the Tooth Relic in Kandy.</p>
+                <p>&#128967; Explore Peradeniya Botanical Gardens.</p>
+                <p>&#128967; Scenic train journey from Kandy to Nuwara Eliya.</p>
+                <p>&#128967; Visit tea plantations and a tea factory.</p>
+                <p>&#128967; Sightseeing in Nuwara Eliya, including Gregory Lake and Victoria Park.</p>
+                <p class="price"><strong>₹45,000</strong></p>
+                <button class="book-btn" onclick="window.location.href='book.html'">Book Now</button>
+            </div>
+
+            <div class="package-card green">
+                <img src="./images/Packages_images/Strand & zon - Bolivar Beach Bar.jpeg" alt="srilanka-packages">
+                <h2>Beach Bliss in Bentota</h2>
+                <p>✔️ 4 Days / 3 Nights</p>
+                <p>✔️ Relaxation, water sports, and coastal activities.</p>
+                <p>✔️  Bentota (southwestern coast).</p>
+                <p>&#128967; Accommodation in a beach resort in Bentota.</p>
+                <p>&#128967; Airport transfers to and from Colombo.</p>
+                <p>&#128967; Transportation in an air-conditioned private vehicle.</p>
+                <p>&#128967; Leisure time on Bentota beach.</p>
+                <p>&#128967; water sports activities (at own cost).</p>
+                <p>&#128967; A boat trip on the Madu River, including a visit to a turtle hatchery.</p>
+                <p>&#128967; Possibly a visit to a spice garden en route.</p>
+                <p>&#128967; Breakfast daily.</p>
+                <p class="price"><strong>₹40,000</strong></p>
+                <button class="book-btn" onclick="window.location.href='book.html'">Book Now</button>
+            </div>
+
+            <div class="package-card light-purple">
+                <img src="./images/Packages_images/Colombo.jpeg" alt="srilanka-packages">
+                <h2> Colombo & Cultural Introduction</h2>
+                <p>✔️ 4 Days / 3 Nights</p>
+                <p>✔️ Exploring the capital city and getting a glimpse of Sri Lankan culture.</p>
+                <p>✔️ Colombo, Pinnawala (day trip).</p>
+                <p>&#128967; Accommodation in a hotel in Colombo.</p>
+                <p>&#128967; Airport transfers.</p>
+                <p>&#128967; Transportation for sightseeing.</p>
+                <p>&#128967; Colombo city tour, including key landmarks like Galle Face Green, Independence Square, and temples.</p>
+                <p>&#128967; A day trip to the Pinnawala Elephant Orphanage.</p>
+                <p>&#128967; Optional shopping excursions.</p>
+                <p>&#128967; Breakfast daily.</p>
+                <p class="price"><strong>₹35,000</strong></p>
+                <button class="book-btn" onclick="window.location.href='book.html'">Book Now</button>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <p>Contact us at: support@travelwithus.com | +971 123 456 789</p>
+        <div class="socials">
+            <a href="https://www.facebook.com"><img src="./images/facebook.png" alt="Facebook" /></a>
+            <a href="https://www.instagram.com"><img src="images/instagram.png" alt="Instagram" /></a>
+            <a href="https://www.twitter.com"><img src="images/social_13051786.png" alt="Twitter" /></a>
+        </div>
+        <p>&copy; 2025 Tours Website. All rights reserved.</p>
+    </footer>
+
+</body>
+
+</html>

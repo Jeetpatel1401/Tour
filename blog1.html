@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>UK Trip Design</title>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html,
+        body {
+            height: 100%;
+            /* Make html and body take up the full viewport height */
+            overflow-x: hidden;
+            /* Prevent horizontal scrollbar */
+        }
+
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #0a0a0a;
+            color: #fff;
+            display: flex;
+            /* Enable flexbox for vertical centering */
+            flex-direction: column;
+            /* Stack header and container vertically */
+        }
+
+        header {
+            display: flex;
+            align-items: center;
+            padding: 20px 50px;
+            background: rgba(0, 0, 0, 0.8);
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            justify-content: center;
+            /* Center items horizontally */
+        }
+
+        .logo-container {
+            position: absolute;
+            /* Position logo to the left */
+            left: 50px;
+            display: flex;
+            align-items: center;
+        }
+
+        .logo-container img {
+            height: 30px;
+            margin-right: 10px;
+        }
+
+        header h1 {
+            font-size: 2em;
+            margin: 0;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 80px auto 20px;
+            padding: 20px;
+            background: #1a1a1a;
+            border-radius: 8px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 30px;
+            align-items: center;
+            flex-grow: 1;
+            /* Allow container to grow and take remaining vertical space */
+        }
+
+        .text-column {
+            padding-right: 20px;
+        }
+
+        .image-column {
+            position: relative;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+
+        .main-bg {
+            width: 100%;
+            height: auto;
+            display: block;
+            border-radius: 8px;
+        }
+
+        .small-img-top {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            border: 3px solid #fff;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+            object-fit: cover;
+        }
+
+        .small-img-overlap {
+            position: absolute;
+            bottom: 20px;
+            left: -40px;
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            border: 3px solid #fff;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+            object-fit: cover;
+        }
+
+        h2 {
+            color: #ffcc00;
+            margin-bottom: 20px;
+            font-size: 2.5em;
+        }
+
+        p {
+            font-size: 1.1em;
+            margin-bottom: 15px;
+        }
+
+        /* Responsive adjustments */
+        @media (max-width: 768px) {
+
+            html,
+            body {
+                height: auto;
+                /* Allow scrolling on smaller screens */
+            }
+
+            header {
+                flex-direction: column;
+                align-items: center;
+                text-align: center;
+                padding: 20px;
+            }
+
+            .logo-container {
+                position: static;
+                margin-right: 0;
+                margin-bottom: 10px;
+            }
+
+            .logo-container img {
+                margin-right: 0;
+            }
+
+            .container {
+                grid-template-columns: 1fr;
+                margin-top: 120px;
+                padding: 15px;
+                flex-grow: 0;
+                /* Don't grow on smaller screens */
+            }
+
+            .text-column {
+                padding-right: 0;
+                margin-bottom: 20px;
+            }
+
+            .small-img-overlap {
+                left: 10px;
+            }
+        }
+
+        .slider-container {
+            position: relative;
+            /* Needed to position arrows */
+        }
+
+
+        .slider-arrow {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 40px;
+            height: 40px;
+            background-color: rgba(0, 0, 0, 0.5);
+            /* Semi-transparent background */
+            color: black;
+            background-color: rgb(125, 115, 115);
+            font-size: 24px;
+            text-align: center;
+            line-height: 40px;
+            border-radius: 50%;
+            cursor: pointer;
+            user-select: none;
+            /* Prevent text selection */
+        }
+
+
+        .slider-arrow.prev {
+            left: 10px;
+        }
+
+
+        .slider-arrow.next {
+            right: 10px;
+        }
+    </style>
+
+</head>
+
+<body>
+
+    <header>
+        <a href="Tour&Travel.html" class="logo-container">
+            <img src="images/arrow-circle-left.png" alt="Back" />
+        </a>
+        <h1>Dreaming of the Bali</h1>
+    </header>
+
+    <div class="container">
+        <div class="text-column">
+            <h2>Design Your UK.</h2>
+            <p>⚝ The United Kingdom beckons with its rich heritage and diverse landscapes, but planning a multi-faceted
+                 trip can feel like a grand undertaking. Envision having your ideal UK exploration expertly curated,
+                 freeing you to anticipate the charm of quaint villages and the grandeur of historic landmarks.</p>
+
+            <p>⚝ Our passion for the UK, combined with our local knowledge, allows us to take the stress out of your
+                 travel arrangements. We design seamless and unforgettable experiences, ensuring you uncover the very
+                 best of England, Scotland, Wales, and Northern Ireland, all according to your preferences.</p>
+        </div>
+
+        <div class="image-column">
+            <img src="images/blog1bg.jpg" alt="UK Image" class="main-bg">
+            <img src="images/blog1-left.jpg" alt="Small Top Image" class="small-img-top">
+            <img src="images/blog1-right.jpg" alt="Small Overlap Image" class="small-img-overlap">
+        </div>
+
+        <a href="blog3.html" class="slider-arrow prev">&#8249;</a>
+        <a href="blog2.html" class="slider-arrow next">&#8250;</a>
+
+    </div>
+
+</body>
+
+</html>

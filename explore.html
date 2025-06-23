@@ -1,0 +1,1367 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <title>The Great Outdoors - Packages</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Arial', sans-serif;
+      background-color: #0a0a0a;
+      color: #fff;
+      line-height: 1.6;
+    }
+
+    header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 20px 50px;
+      background: rgba(0, 0, 0, 0.85);
+      width: 100%;
+      top: 0;
+      z-index: 1000;
+    }
+
+    .logo-container {
+      display: flex;
+      align-items: center;
+    }
+
+    .logo-container img {
+      height: 40px;
+      margin-right: 10px;
+    }
+
+    header h1 {
+      font-size: 28px;
+      color: #ffcc00;
+    }
+
+    nav a {
+      margin: 0 15px;
+      color: whitesmoke;
+      text-decoration: none;
+      font-weight: bold;
+      transition: color 0.3s ease;
+      cursor: pointer;
+    }
+
+    nav a:hover,
+    nav a.active-nav {
+      color: #ffcc00;
+    }
+
+    .all-packages-section {
+      padding-top: 40px;
+      padding-bottom: 40px;
+      background-color: #111;
+      text-align: center;
+    }
+
+    .all-packages-section h1 {
+      font-size: 36px;
+      color: #fff;
+      margin-bottom: 30px;
+      text-transform: uppercase;
+      margin-top: 20px;
+    }
+
+    .filter-controls {
+      margin-bottom: 30px;
+      padding: 0 15px;
+    }
+
+    .filter-btn {
+      background-color: #333;
+      color: whitesmoke;
+      padding: 10px 20px;
+      border: 1px solid #444;
+      border-radius: 5px;
+      cursor: pointer;
+      font-size: 1em;
+      margin: 5px;
+      transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
+    }
+
+    .filter-btn.active {
+      background-color: #ffcc00;
+      color: #000;
+      border-color: #ffcc00;
+    }
+
+    .filter-btn:hover:not(.active) {
+      background-color: #444;
+      border-color: #555;
+    }
+
+    .packages-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+      gap: 30px;
+      margin-top: 20px;
+      padding: 0 30px;
+    }
+
+    .package-card {
+      background-color: #222;
+      border-radius: 12px;
+      overflow: hidden;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      text-align: left;
+      color: #eee;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .package-card:hover {
+      transform: translateY(-8px);
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.45);
+    }
+
+    .package-card .image-container {
+      width: 100%;
+      height: 220px;
+      overflow: hidden;
+    }
+
+    .package-card .image-container img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+      transition: transform 0.3s ease;
+    }
+
+    .package-card:hover .image-container img {
+      transform: scale(1.05);
+    }
+
+
+    .package-card .details {
+      padding: 20px;
+      flex-grow: 1;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+
+    .package-card h2 {
+      font-size: 22px;
+      margin-top: 0;
+      margin-bottom: 12px;
+      color: #ffcc00;
+    }
+
+    .package-card p {
+      margin-bottom: 10px;
+      font-size: 15px;
+      line-height: 1.5;
+      color: #ccc;
+    }
+
+    .package-card p:last-of-type {
+      margin-bottom: 15px;
+    }
+
+
+    .package-card .price {
+      font-size: 24px;
+      font-weight: bold;
+      color: #ffdd44;
+      margin-top: 10px;
+      margin-bottom: 20px;
+      align-self: flex-start;
+    }
+
+    .package-card .book-btn {
+      background-color: #ffcc00;
+      color: #111;
+      border: none;
+      padding: 12px 25px;
+      font-size: 1em;
+      font-weight: bold;
+      border-radius: 6px;
+      cursor: pointer;
+      width: 100%;
+      transition: background-color 0.3s ease, transform 0.2s ease;
+      margin-top: auto;
+    }
+
+    .package-card .book-btn:hover {
+      background-color: #e5a900;
+      transform: scale(1.03);
+      
+    }
+
+    footer {
+      background: #1c1c1c;
+      color: #aaa;
+      padding: 40px 20px;
+      text-align: center;
+      margin-top: 50px;
+    }
+
+    footer p {
+      margin-bottom: 15px;
+    }
+
+    .socials a {
+      margin: 0 10px;
+    }
+
+    .socials img {
+      height: 24px;
+      transition: transform 0.3s ease, opacity 0.3s ease;
+      opacity: 0.7;
+    }
+
+    .socials img:hover {
+      opacity: 1;
+      transform: scale(1.1);
+    }
+
+   /* .pagination-btn {
+      margin: 5px;
+      padding: 8px 12px;
+      background-color: #333;
+      color: white;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+      font-weight: bold;
+    }
+
+    .pagination-btn.active,
+    .pagination-btn:hover {
+      background-color: #ffcc00;
+      color: #000;
+    }  */
+
+  </style>
+
+</head>
+
+<body>
+  <header>
+    <div class="logo-container">
+      <a href="Tour&Travel.html"><img src="images/HomePage_Logo.png" alt="Tour&Travel Logo"
+          onerror="this.style.display='none'"></a>
+      <h1>Tour&Travel</h1>
+    </div>
+    <nav>
+      <a href="Tour&Travel.html">Home</a>
+      <a href="aboutus.html">Services</a>
+      <a href="contectus.html">Contact Us</a>
+    </nav>
+  </header>
+
+  <section class="all-packages-section">
+    <h1>Explore Our Tour Packages</h1>
+    <div class="filter-controls">
+
+      <button class="filter-btn active" data-filter="all">
+        <img src="./images/LOGO/world.png" style="width: 20px; height: 20px; margin-right: 8px;"> All Packages</button>
+
+      <button class="filter-btn" data-filter="australia">
+        <img src="./images/logo/Australia.png" alt="Australia"
+          style="width: 20px; height: 20px; margin-right: 8px;">Australia</button>
+
+      <button class="filter-btn" data-filter="bali">
+        <img src="./images/logo/Indonesia.png" alt="bali"
+          style="width: 20px; height: 20px; margin-right: 8px;">Bali</button>
+
+      <button class="filter-btn" data-filter="france">
+        <img src="./images/logo/France.png" alt="france"
+          style="width: 20px; height: 20px; margin-right: 8px;">France</button>
+
+      <button class="filter-btn" data-filter="greece">
+        <img src="./images/logo/Greece.png" alt="greece"
+          style="width: 20px; height: 20px; margin-right: 8px;">Greece</button>
+
+      <button class="filter-btn" data-filter="india">
+        <img src="./images/logo/India.png" alt="india"
+          style="width: 20px; height: 20px; margin-right: 8px;">India</button>
+
+      <button class="filter-btn" data-filter="italy">
+        <img src="./images/logo/Italy.png" alt="italy"
+          style="width: 20px; height: 20px; margin-right: 8px;">Italy</button>
+
+      <button class="filter-btn" data-filter="japan">
+        <img src="./images/logo/Japan.png" alt="japan"
+          style="width: 20px; height: 20px; margin-right: 8px;">Japan</button>
+
+      <button class="filter-btn" data-filter="portugal">
+        <img src="./images/logo/Portugal.png" alt="portugal"
+          style="width: 20px; height: 20px; margin-right: 8px;">Portugal</button>
+
+      <button class="filter-btn" data-filter="srilanka">
+        <img src="./images/logo/Sri-lanka.png" alt="srilanka"
+          style="width: 20px; height: 20px; margin-right: 8px;">Sri-Lanka</button>
+
+      <button class="filter-btn" data-filter="thailand">
+        <img src="./images/logo/Thailand.png" alt="thailand"
+          style="width: 20px; height: 20px; margin-right: 8px;">Thailand</button>
+
+      <button class="filter-btn" data-filter="uk">
+        <img src="./images/logo/UK.png" alt="uk" style="width: 20px; height: 20px; margin-right: 8px;">UK</button>
+
+      <button class="filter-btn" data-filter="us">
+        <img src="./images/logo/US.png" alt="us" style="width: 20px; height: 20px; margin-right: 8px;">US</button>
+    </div>
+
+    <div class="packages-grid">
+      <div class="package-card" data-country="australia">
+        <div class="image-container">
+          <img src="./images/Packages_images/Sydney.jpeg" alt="Sydney Highlights tour package"
+            onerror="this.src='https://placehold.co/600x400/222/ccc?text=Sydney+Image';">
+        </div>
+        <div class="details">
+          <h2>Sydney Highlights</h2>
+          <p>✔️ 4 Days/3 Nights</p>
+          <p>✔️ Sydney</p>
+          <p>✔️ Sydney city, Bondi Beach, Blue Mountains (day trip).</p>
+          <p>&#128967; guided city tour.</p>
+          <p>&#128967; Sydney Harbour cruise.</p>
+          <p>&#128967; A day trip to the Blue Mountains.</p>
+          <p>&#128967; Bondi Beach.</p>
+          <p>&#128967; Sydney Harbour Bridge Climb or a tour of the Sydney Opera House.</p>
+          <p>&#128967; Explore Sydney's icons in a flash: Harbour Bridge views and Opera House sails will leave you in
+            awe. Bondi's surf and city's pulse in just a glimpse.</p>
+          <p class="price"><strong> ₹1,50,000</strong></p>
+          <button class="book-btn" onclick="window.location.href='book.html'">Book Now</button>
+        </div>
+      </div>
+
+      <div class="package-card" data-country="australia">
+        <div class="image-container">
+          <img src="./images/Packages_images/Melbourne-culture.jpeg" alt="Melbourne City & Great Ocean Road package"
+            onerror="this.src='https://placehold.co/600x400/222/ccc?text=Melbourne+Image';">
+        </div>
+        <div class="details">
+          <h2>Melbourne City & Great Ocean Road</h2>
+          <p>✔️ 4 Days/3 Nights</p>
+          <p>✔️ Melbourne's culture and a scenic coastal drive.</p>
+          <p>✔️ Melbourne city, Great Ocean Road.</p>
+          <p>&#128967; Guided tour</p>
+          <p>&#128967; Melbourne city</p>
+          <p>&#128967; The Great Ocean Road</p>
+          <p>&#128967; See the Twelve Apostles</p>
+          <p>&#128967; stunning coastal formations</p>
+          <p>&#128967; See Fountain</p>
+          <p>&#128967; Melbourne's cool culture and coastal drama await: city laneways buzz, then the Twelve Apostles
+            rise from the sea. A swift taste of Victoria's best.</p>
+          <p class="price"><strong> ₹1,20,000</strong></p>
+          <button class="book-btn" onclick="window.location.href='book.html'">Book Now</button>
+        </div>
+      </div>
+
+      <div class="package-card" data-country="australia">
+        <div class="image-container">
+          <img src="./images/Packages_images/Adelaide.jpeg" alt="Adelaide & Kangaroo Island package"
+            onerror="this.src='https://placehold.co/600x400/222/ccc?text=Adelaide+Image';">
+        </div>
+        <div class="details">
+          <h2>Adelaide & Kangaroo Island</h2>
+          <p>✔️ 4 Days/3 Nights</p>
+          <p>✔️ Experiencing South Australia's capital and unique wildlife.</p>
+          <p>✔️ Adelaide city, Kangaroo Island.</p>
+          <p>&#128967; A full-day tour to Kangaroo Island</p>
+          <p>&#128967; Ferry Flight</p>
+          <p>&#128967; City tour of Adelaide,</p>
+          <p>&#128967; ffering wildlife viewing opportunities (kangaroos, koalas, seals)</p>
+          <p>&#128967; Exploring the island's natural beauty.</p>
+          <p>&#128967; Discover Adelaide's charm and Kangaroo Island's wild beauty in a heartbeat. City sights give way
+            to unique wildlife encounters and stunning coastal landscapes.</p>
+          <p class="price"><strong>₹1,30,000</strong></p>
+          <button class="book-btn" onclick="window.location.href='book.html'">Book Now</button>
+        </div>
+      </div>
+
+      <div class="package-card" data-country="australia">
+        <div class="image-container">
+          <img src="./images/Packages_images/Melbone.jpeg" alt="Melbourne Culture & Wildlife package"
+            onerror="this.src='https://placehold.co/600x400/222/ccc?text=Melbourne+Wildlife';">
+        </div>
+        <div class="details">
+          <h2>Melbourne Culture & Wildlife </h2>
+          <p>✔️ 4 Days/3 Nights</p>
+          <p>✔️ Melbourne city, Phillip Island.</p>
+          <p>✔️ Experiencing Melbourne's vibrant city life and encountering Australian wildlife.</p>
+          <p>&#128967; Melbourne City Tour:- A guided tour showcasing key landmarks like Federation Square, Flinders
+            Street Station, Queen Victoria Market, the Royal Botanic Gardens, and possibly a tram ride.</p>
+          <p>&#128967; Phillip Island Penguin Parade Tour:- An afternoon and evening tour to Phillip Island to witness
+            the famous Penguin Parade, where little penguins return to their burrows at sunset. This tour often includes
+            visits to other wildlife spots on the island, such as koala conservation centers or seal rocks.</p>
+          <p>&#128967; Activities:- You might have the option to add experiences like visiting the National Gallery of
+            Victoria, exploring the laneways and street art, a sporting event (depending on the season), or a day trip
+            to the Yarra Valley wine region.</p>
+          <p class="price"><strong> ₹1,30,000</strong></p>
+          <button class="book-btn" onclick="window.location.href='book.html'">Book Now</button>
+        </div>
+      </div>
+
+      <div class="package-card" data-country="bali">
+        <div class="image-container">
+          <img src="./images/Packages_images/Discover Bali_1.jpeg" alt="Discover Bali Package"
+            onerror="this.src='https://placehold.co/600x400/222/ccc?text=Discover+Bali';">
+        </div>
+        <div class="details">
+          <h2>Discover Bali (Inclusive Flights)</h2>
+          <p>✔️ 6 Nights 7 Days</p>
+          <p>✔️ 2 Time Meal</p>
+          <p>✔️ Daily Breakfast</p>
+          <p>&#128967; Grand Ixora UI - Holidays Selections, 4 Star.</p>
+          <p>&#128967; Water Sports.</p>
+          <p>&#128967; Nusa Penida Island Tour.</p>
+          <p>&#128967; Kintamani Tour.</p>
+          <p>&#128967; Grand Ixora UI - Holidays Selections.</p>
+          <p class="price"><strong>₹76,000</strong></p> <button class="book-btn"
+            onclick="window.location.href='book.html'">Book Now</button>
+        </div>
+      </div>
+
+      <div class="package-card" data-country="bali">
+        <div class="image-container">
+          <img src="./images/Packages_images/Trunyan_Villaage_Bali2.jpeg" alt="Super Saver Bali Holiday"
+            onerror="this.src='https://placehold.co/600x400/222/ccc?text=Saver+Bali';">
+        </div>
+        <div class="details">
+          <h2>Super Saver Bali Holiday</h2>
+          <p>✔️ 5 Nights 6 Days</p>
+          <p>✔️ 2 Time Meal</p>
+          <p>✔️ Daily Breakfast</p>
+          <p>&#128967; Wina Holiday Villa Kuta Bali UI - Holidays Selections, 4 Star</p>
+          <p>&#128967; Breakfast : Included in Bali</p>
+          <p>&#128967; Kintamani Volcano, Tegenungan Waterfall and Alas Harum Swing</p>
+          <p>&#128967; Day Meals: Breakfast : Included in Bali</p>
+          <p>&#128967; Day Meals: Breakfast : Included in Bali</p>
+          <p class="price"><strong>₹64,000</strong></p>
+          <button class="book-btn" onclick="window.location.href='book.html'">Book Now</button>
+        </div>
+      </div>
+
+      <div class="package-card" data-country="bali">
+        <div class="image-container">
+          <img src="./images/Packages_images/Seminyak Beach_bali3.jpeg" alt="Explore Bali with Family Package"
+            onerror="this.src='https://placehold.co/600x400/222/ccc?text=Family+Bali';">
+        </div>
+        <div class="details">
+          <h2>Explore Bali with Family</h2>
+          <p>✔️ 6 Nights 7 Days</p>
+          <p>✔️ 2N Kuta, 2N Seminyak, 2N Ubud </p>
+          <p>✔️ Daily Breakfast</p>
+          <p>&#128967; Uluwatu Temple Tour</p>
+          <p>&#128967; Inter-Hotel Transfer</p>
+          <p>&#128967; Water Sports</p>
+          <p>&#128967; Nusa Penida Island Tour</p>
+          <p>&#128967; Kintamani Tour</p>
+          <p>&#128967; ATV Ride</p>
+          <p>&#128967; Hotel in Ubud</p>
+          <p class="price"><strong>₹97,000</strong></p>
+          <button class="book-btn" onclick="window.location.href='book.html'">Book Now</button>
+        </div>
+      </div>
+
+      <div class="package-card" data-country="bali">
+        <div class="image-container">
+          <img src="./images/Packages_images/Ubud,Bali4.jpg" alt="Ubud Cultural Heart Package"
+            onerror="this.src='https://placehold.co/600x400/222/ccc?text=Ubud+Bali';">
+        </div>
+        <div class="details">
+          <h2>Ubud Cultural Heart</h2>
+          <p>✔️ 4 Days / 3 Nights</p>
+          <p>✔️ Immerse yourself in Bali's spiritual and artistic hub.</p>
+          <p>✔️ Ubud and its surrounding areas.</p>
+          <p>&#128967; Accommodation in Ubud (options range from guesthouses to luxury resorts).</p>
+          <p>&#128967; Airport transfers</p>
+          <p>&#128967; Tegalalang Rice Terraces: Iconic cascading rice paddies.</p>
+          <p>&#128967; Sacred Monkey Forest Sanctuary: Interact with playful monkeys in a lush forest.</p>
+          <p>&#128967; Ubud Art Market: Browse local crafts, paintings, and souvenirs.</p>
+          <p>&#128967; Ubud Palace: Explore the traditional Balinese architecture.</p>
+          <p>&#128967; Visit a traditional Balinese dance performance, a cooking class, or a spiritual cleansing ritual
+            at Tirta Empul Temple.</p>
+          <p class="price"><strong>₹78,000</strong></p>
+          <button class="book-btn" onclick="window.location.href='book.html'">Book Now</button>
+        </div>
+      </div>
+
+      <div class="package-card" data-country="france">
+        <div class="image-container">
+          <img src="./images/Packages_images/paris1_france.jpeg" alt="Loveable Paris Package"
+            onerror="this.src='https://placehold.co/600x400/222/ccc?text=Paris+Love';">
+        </div>
+        <div class="details">
+          <h2>Loveable Paris</h2>
+          <p>✔️ 4 Night 5 Days</p>
+          <p>✔️ Paris</p>
+          <p>&#128967; Deluxe accommodations</p>
+          <p>&#128967; Customizable package, suggesting flexibility in choosing activities and meals.</p>
+          <p>&#128967; Visits to iconic landmarks like the Eiffel Tower</p>
+          <p>&#128967; Louvre Museum</p>
+          <p>&#128967; Notre Dame Cathedral</p>
+          <p>&#128967; Arc de Triomphe, and potentially experiences like a Seine River cruise or exploring Montmartre.
+          </p>
+          <p class="price"><strong>₹1,16,853</strong></p>
+          <button class="book-btn" onclick="window.location.href='book.html'">Book Now</button>
+        </div>
+      </div>
+
+      <div class="package-card" data-country="france">
+        <div class="image-container">
+          <img src="./images/Packages_images/Paris2_france.jpeg" alt="Paris Group Departure Package"
+            onerror="this.src='https://placehold.co/600x400/222/ccc?text=Paris+Group';">
+        </div>
+        <div class="details">
+          <h2>Paris Group Departure</h2>
+          <p>✔️ 3 Night 4 Days</p>
+          <p>✔️ Focused trip to Paris.</p>
+          <p>&#128967; The highlights of Paris.</p>
+          <p>&#128967; A city tour.</p>
+          <p>&#128967; Visit to a specific monument.</p>
+          <p>&#128967; Another popular Parisian experience.</p>
+          <p class="price"><strong>₹3,28,307</strong></p>
+          <button class="book-btn" onclick="window.location.href='book.html'">Book Now</button>
+        </div>
+      </div>
+
+      <div class="package-card" data-country="france">
+        <div class="image-container">
+          <img src="./images/Packages_images/France_Adventure.jpeg" alt="European Grand Adventure Package"
+            onerror="this.src='https://placehold.co/600x400/222/ccc?text=Europe+Adventure';">
+        </div>
+        <div class="details">
+          <h2>European Grand Adventure</h2>
+          <p>✔️ 12 Night 13 Days</p>
+          <p>&#128967; 3 nights in Paris.</p>
+          <p>&#128967; London</p>
+          <p>&#128967; Geneva</p>
+          <p>&#128967; Switzerland</p>
+          <p>&#128967; Innsbruck</p>
+          <p>&#128967; Padova</p>
+          <p>&#128967; Rome</p>
+          <p>&#128967; Tuscany</p>
+          <p class="price"><strong>₹2,70,000</strong></p>
+          <button class="book-btn" onclick="window.location.href='book.html'">Book Now</button>
+        </div>
+      </div>
+
+      <div class="package-card" data-country="france">
+        <div class="image-container">
+          <img src="./images/Packages_images/France4.jpeg" alt="Highlights Of France Package"
+            onerror="this.src='https://placehold.co/600x400/222/ccc?text=France+Highlights';">
+        </div>
+        <div class="details">
+          <h2>Highlights Of France</h2>
+          <p>✔️ 8 Night 9 Days </p>
+          <p>✔️ France</p>
+          <p>&#128967; City Tour</p>
+          <p>&#128967; Activities</p>
+          <p>&#128967; visit Museum</p>
+          <p>&#128967; Another popular street experience.</p>
+          <p class="price"><strong>₹242,800</strong></p>
+          <button class="book-btn" onclick="window.location.href='book.html'">Book Now</button>
+        </div>
+      </div>
+
+      <div class="package-card" data-country="greece">
+        <div class="image-container">
+          <img src="./images/Packages_images/Santorini.jpeg" alt="Athens & Santorini Package"
+            onerror="this.src='https://placehold.co/600x400/222/ccc?text=Santorini';">
+        </div>
+        <div class="details">
+          <h2>Athens & Santorini</h2>
+          <p>✔️ 5 Night 6 Days</p>
+          <p>✔️ Athens (historical sites like the Acropolis, Parthenon), Santorini (iconic white-washed villages,
+            caldera views).</p>
+          <p>&#128967; Accommodation in 3-4 star hotels.</p>
+          <p>&#128967; Daily breakfast.</p>
+          <p>&#128967; Guided city tour of Athens.</p>
+          <p>&#128967; Transfers between airport/ports and hotels.</p>
+          <p>&#128967; Ferry tickets between Athens and Santorini.</p>
+          <p class="price"><strong>₹80,000</strong></p>
+          <button class="book-btn" onclick="window.location.href='book.html'">Book Now</button>
+        </div>
+      </div>
+
+      <div class="package-card" data-country="greece">
+        <div class="image-container">
+          <img src="./images/Packages_images/Athens.jpeg" alt="Athens, Mykonos & Santorini Package"
+            onerror="this.src='https://placehold.co/600x400/222/ccc?text=Athens+Mykonos';">
+        </div>
+        <div class="details">
+          <h2>Athens, Mykonos & Santorini</h2>
+          <p>✔️ 7 Nights 8 Days</p>
+          <p>✔️ Athens, Mykonos (beaches, nightlife, windmills), Santorini.</p>
+          <p>&#128967; Accommodation in 3-4 star hotels.</p>
+          <p>&#128967; Guided city tour of Athens.</p>
+          <p>&#128967; Daily breakfast.</p>
+          <p>&#128967; Ferry tickets between Athens and Santorini.</p>
+          <p>&#128967; City Tour</p>
+          <p class="price"><strong>₹90,000</strong></p>
+          <button class="book-btn" onclick="window.location.href='book.html'">Book Now</button>
+        </div>
+      </div>
+
+      <div class="package-card" data-country="greece">
+        <div class="image-container">
+          <img src="./images/Packages_images/Paros Island.jpeg" alt="Greek Island Hopping Package"
+            onerror="this.src='https://placehold.co/600x400/222/ccc?text=Paros+Island';">
+        </div>
+        <div class="details">
+          <h2>Greek Island Hopping</h2>
+          <p>✔️ 7 Nights 8 Days</p>
+          <p>✔️ Focuses on exploring 2-3 different Greek islands (e.g., Mykonos, Santorini, Crete, Rhodes, Paros).</p>
+          <p>&#128967; Accommodation in 3-4 star hotels.</p>
+          <p>&#128967; Guided city tour of Athens.</p>
+          <p>&#128967; Daily breakfast.</p>
+          <p>&#128967; Ferry tickets between Athens and Santorini.</p>
+          <p>&#128967; City Tour</p>
+          <p>&#128967; some island tours.</p>
+          <p class="price"><strong>₹1,00,000</strong></p>
+          <button class="book-btn" onclick="window.location.href='book.html'">Book Now</button>
+        </div>
+      </div>
+
+      <div class="package-card" data-country="greece">
+        <div class="image-container">
+          <img src="./images/Packages_images/Athens & Santorini.jpeg" alt="Greece Getaway/Athens Stopover Package"
+            onerror="this.src='https://placehold.co/600x400/222/ccc?text=Athens+Stopover';">
+        </div>
+        <div class="details">
+          <h2>Greece Getaway/Athens Stopover</h2>
+          <p>✔️ 3 Night 4 Days</p>
+          <p>✔️ Primarily focuses on Athens</p>
+          <p>&#128967; Accommodation in 3-4 star hotels.</p>
+          <p>&#128967; Daily breakfast.</p>
+          <p>&#128967; Guided city tour of Athens.</p>
+          <p>&#128967; Transfers between airport/ports and hotels.</p>
+          <p class="price"><strong>₹40,000 </strong></p>
+          <button class="book-btn" onclick="window.location.href='book.html'">Book Now</button>
+        </div>
+      </div>
+
+      <div class="package-card" data-country="italy">
+        <div class="image-container">
+          <img src="./images/Packages_images/ROME_CITY.jpeg" alt="Rome City Break Package"
+            onerror="this.src='https://placehold.co/600x400/222/ccc?text=Rome+City';">
+        </div>
+        <div class="details">
+          <h2>Rome City Break</h2>
+          <p>✔️ 4 Days/3 Nights</p>
+          <p>✔️ Immersing yourself in the historical heart of Italy.</p>
+          <p>✔️ Rome (including Vatican City).</p>
+          <p>&#128967; Guided tours of the Colosseum.</p>
+          <p>&#128967; Roman Forum.</p>
+          <p>&#128967; Palatine Hill.</p>
+          <p>&#128967; Vatican City.</p>
+          <p>&#128967; St. Peter's Basilica, Vatican Museums, Sistine Chapel.</p>
+          <p>&#128967; Trevi Fountain.</p>
+          <p>&#128967; The Pantheon.</p>
+          <p class="price"><strong>₹90,000</strong></p>
+          <button class="book-btn" onclick="window.location.href='book.html'">Book Now</button>
+        </div>
+      </div>
+
+      <div class="package-card" data-country="italy">
+        <div class="image-container">
+          <img src="./images/Packages_images/Florence & Pisa.jpeg" alt="Florence & Pisa Glimpse Package"
+            onerror="this.src='https://placehold.co/600x400/222/ccc?text=Florence+Pisa';">
+        </div>
+        <div class="details">
+          <h2> Florence & Pisa Glimpse</h2>
+          <p>✔️ 4 Days/3 Nights</p>
+          <p>✔️ Renaissance art, architecture, and the iconic Leaning Tower.</p>
+          <p>✔️ Florence, Pisa (day trip).</p>
+          <p>&#128967; Florence.</p>
+          <p>&#128967; Guided tours of Florence</p>
+          <p>&#128967; Duomo</p>
+          <p>&#128967; Uffizi Gallery</p>
+          <p>&#128967; Accademia Gallery to see Michelangelo's David</p>
+          <p>&#128967; Ponte Vecchio</p>
+          <p>&#128967; Palazzo Pitti.</p>
+          <p>&#128967; A day trip to Pisa to see the Leaning Tower and Piazza dei Miracoli.</p>
+          <p class="price"><strong>₹85,000</strong></p>
+          <button class="book-btn" onclick="window.location.href='book.html'">Book Now</button>
+        </div>
+      </div>
+
+      <div class="package-card" data-country="italy">
+        <div class="image-container">
+          <img src="./images/Packages_images/Venice, Italy.jpeg" alt="Venice Short Escape Package"
+            onerror="this.src='https://placehold.co/600x400/222/ccc?text=Venice+Escape';">
+        </div>
+        <div class="details">
+          <h2>Venice Short Escape</h2>
+          <p>✔️ 4 Days/3 Nights</p>
+          <p>✔️ The unique charm and waterways of the "Floating City.</p>
+          <p>✔️ Venice (including Murano and Burano islands)</p>
+          <p>&#128967; Accommodation in Venice.</p>
+          <p>&#128967; Guided walking tour of Venice: St. Mark's Square, St. Mark's Basilica, Doge's Palace, Rialto
+            Bridge.</p>
+          <p>&#128967; A boat trip to Murano (famous for glass blowing) and Burano (known for its colorful houses and
+            lacemaking).</p>
+          <p>&#128967; Gondola ride, cicchetti (Venetian tapas) tour, or a visit to the Peggy Guggenheim Collection.</p>
+          <p class="price"><strong>₹60,000</strong></p>
+          <button class="book-btn" onclick="window.location.href='book.html'">Book Now</button>
+        </div>
+      </div>
+
+      <div class="package-card" data-country="italy">
+        <div class="image-container">
+          <img src="./images/Packages_images/Naples, Sorrento.jpeg" alt="Naples & Amalfi Coast Taster Package"
+            onerror="this.src='https://placehold.co/600x400/222/ccc?text=Naples+Amalfi';">
+        </div>
+        <div class="details">
+          <h2>Naples & Amalfi Coast Taster</h2>
+          <p>✔️ 4 Days/3 Nights</p>
+          <p>✔️ Southern Italy's vibrant city and stunning coastal scenery.</p>
+          <p>✔️ Naples, Sorrento (as a base for exploring the Amalfi Coast).</p>
+          <p>&#128967; Accommodation in Naples or Sorrento.</p>
+          <p>&#128967; Airport transfers (to/from Naples Airport).</p>
+          <p>&#128967; A guided tour of Naples' historical center. </p>
+          <p>&#128967; A day trip along the Amalfi Coast, visiting picturesque towns like Positano and Amalfi
+            (transportation by bus or private car).</p>
+          <p>&#128967; Visit to Pompeii (near Naples), a boat trip to Capri, or a pizza-making class in Naples.</p>
+          <p class="price"><strong>₹65,000</strong></p>
+          <button class="book-btn" onclick="window.location.href='book.html'">Book Now</button>
+        </div>
+      </div>
+
+      <div class="package-card" data-country="japan">
+        <div class="image-container">
+          <img src="./images/Packages_images/fuji_japan.jpeg" alt="Classic Japan Tour Package"
+            onerror="this.src='https://placehold.co/600x400/222/ccc?text=Mt+Fuji+Japan';">
+        </div>
+        <div class="details">
+          <h2>Classic Japan Tour</h2>
+          <p>✔️ Tokyo → Mt. Fuji → Kyoto</p>
+          <p>✔️ 7Day-6Night</p>
+          <p>&#128967; Tokyo city tour</p>
+          <p>&#128967; Mt. Fuji 5th Station</p>
+          <p>&#128967; Lake Ashi cruise</p>
+          <p>&#128967; Bullet train ride to Kyoto</p>
+          <p>&#128967; Fushimi Inari Shrine</p>
+          <p>&#128967; Kyoto</p>
+          <p>&#128967; Mt. Fuji</p>
+          <p class="price"><strong> ₹1,89,000</strong></p>
+          <button class="book-btn" onclick="window.location.href='book.html'">Book Now</button>
+        </div>
+      </div>
+
+      <div class="package-card" data-country="japan">
+        <div class="image-container">
+          <img src="./images/Packages_images/Tokyo_japan.jpeg" alt="Budget Japan Explorer Package"
+            onerror="this.src='https://placehold.co/600x400/222/ccc?text=Tokyo+Japan';">
+        </div>
+        <div class="details">
+          <h2> Budget Japan Explorer</h2>
+          <p>✔️ 5 Day- 4 Night </p>
+          <p>✔️ Tokyo → Kyoto</p>
+          <p>&#128967; Free day for shopping</p>
+          <p>&#128967; Akihabara</p>
+          <p>&#128967; Shibuya</p>
+          <p>&#128967; Mt. Fuji</p>
+          <p>&#128967; Nikko </p>
+          <p class="price"><strong> ₹1,35,000</strong></p>
+          <button class="book-btn" onclick="window.location.href='book.html'">Book Now</button>
+        </div>
+      </div>
+
+      <div class="package-card" data-country="japan">
+        <div class="image-container">
+          <img src="./images/Packages_images/Kyoto_japan.jpeg" alt="Japan Itinerary Package"
+            onerror="this.src='https://placehold.co/600x400/222/ccc?text=Kyoto+Japan';">
+        </div>
+        <div class="details">
+          <h2>Japan Itinerary</h2>
+          <p>✔️ 5 Day- 4 Night</p>
+          <p>✔️ Tokyo → Mt. Fuji → Kyoto</p>
+          <p>&#128967; Visit Asakusa Senso-ji Temple & see Tokyo street</p>
+          <p>&#128967; Tokyo Disneyland</p>
+          <p>&#128967; Mt. Fuji & Hakone Day Trip</p>
+          <p>&#128967; Bullet Train to Kyoto + Kyoto Tour</p>
+          <p>&#128967; Arashiyama + Departure</p>
+          <p class="price"><strong> ₹1,50,000</strong></p>
+          <button class="book-btn" onclick="window.location.href='book.html'">Book Now</button>
+        </div>
+      </div>
+
+      <div class="package-card" data-country="japan">
+        <div class="image-container">
+          <img src="./images/Packages_images/Hakone_Japan.jpeg" alt="Hakone & Mount Fuji Views Package"
+            onerror="this.src='https://placehold.co/600x400/222/ccc?text=Hakone+Japan';">
+        </div>
+        <div class="details">
+          <h2>Hakone & Mount Fuji Views</h2>
+          <p>✔️ 4 Days / 3 Nights</p>
+          <p>✔️ Hakone, Lake Ashi, Mount Fuji area.</p>
+          <p>&#128967; Experience the stunning natural beauty around Mount Fuji and the Hakone region.</p>
+          <p>&#128967; Accommodation in a traditional Onsen Ryokan in Hakone with hot spring baths.</p>
+          <p>&#128967; Transportation within Hakone (e.g., Hakone Ropeway, cruise on Lake Ashi).</p>
+          <p>&#128967; Views of Mount Fuji (weather permitting).</p>
+          <p>&#128967; Visit the Hakone Open-Air Museum.</p>
+          <p>&#128967; Visit the Owakudani volcanic valley, explore the Pola Museum of Art, or take a scenic train ride.
+          </p>
+          <p class="price"><strong> ₹85,000</strong></p>
+          <button class="book-btn" onclick="window.location.href='book.html'">Book Now</button>
+        </div>
+      </div>
+
+      <div class="package-card" data-country="portugal">
+        <div class="image-container">
+          <img src="./images/Packages_images/Lisbon.jpeg" alt="Lisbon City Exploration Package"
+            onerror="this.src='https://placehold.co/600x400/222/ccc?text=Lisbon+Portugal';">
+        </div>
+        <div class="details">
+          <h2>Lisbon City Exploration</h2>
+          <p>✔️ 4 Days / 3 Nights</p>
+          <p>✔️ Discovering the capital city's history, culture, and vibrant atmosphere.</p>
+          <p>✔️ Lisbon, possibly a day trip to Sintra or Cascais.</p>
+          <p>&#128967; Accommodation in Lisbon.</p>
+          <p>&#128967; Guided city tour of Lisbon's key districts (Alfama, Baixa, Belém).</p>
+          <p>&#128967; Visits to historical sites like Jerónimos Monastery, Belém Tower, São Jorge Castle.</p>
+          <p>&#128967; A ride on Tram 28.</p>
+          <p>&#128967; Day trip to Sintra (Pena Palace, Quinta da Regaleira) and/or the coastal town of Cascais. Fado
+            music experience.</p>
+          <p class="price"><strong>₹55,000</strong></p>
+          <button class="book-btn" onclick="window.location.href='book.html'">Book Now</button>
+        </div>
+      </div>
+
+      <div class="package-card" data-country="portugal">
+        <div class="image-container">
+          <img src="./images/Packages_images/Porto & Douro Valley.jpeg" alt="Porto & Douro Valley Wine Region Package"
+            onerror="this.src='https://placehold.co/600x400/222/ccc?text=Porto+Portugal';">
+        </div>
+        <div class="details">
+          <h2>Porto & Douro Valley Wine Region</h2>
+          <p>✔️ 4 Days / 3 Nights</p>
+          <p>✔️ Porto, Douro Valley.</p>
+          <p>&#128967; Guided tour of Porto, including Ribeira district, Dom Luís I Bridge, and Port wine cellars with
+            tasting.</p>
+          <p>&#128967; A scenic cruise on the Douro River.</p>
+          <p>&#128967; Visit to vineyards in the Douro Valley with wine tasting.</p>
+          <p>&#128967; Explore Livraria Lello (one of the world's most beautiful bookstores).</p>
+          <p class="price"><strong>₹70,000</strong></p>
+          <button class="book-btn" onclick="window.location.href='book.html'">Book Now</button>
+        </div>
+      </div>
+
+      <div class="package-card" data-country="portugal">
+        <div class="image-container">
+          <img src="./images/Packages_images/Algarve Coastal Getaway.jpeg" alt="Algarve Coastal Getaway Package"
+            onerror="this.src='https://placehold.co/600x400/222/ccc?text=Algarve+Portugal';">
+        </div>
+        <div class="details">
+          <h2>Algarve Coastal Getaway</h2>
+          <p>✔️ 4 Days / 3 Nights</p>
+          <p>✔️ Relaxation, beaches, and stunning coastal scenery in southern Portugal.</p>
+          <p>✔️ Algarve region (e.g., Lagos, Albufeira, or Faro).</p>
+          <p>&#128967; Explore the famous beaches and cliffs (e.g., Ponta da Piedade in Lagos, Benagil Caves).</p>
+          <p>&#128967; Boat trips to explore sea caves, water sports activities, visit to charming coastal towns.</p>
+          <p class="price"><strong>₹65,000</strong></p>
+          <button class="book-btn" onclick="window.location.href='book.html'">Book Now</button>
+        </div>
+      </div>
+      <div class="package-card" data-country="portugal">
+        <div class="image-container">
+          <img src="./images/Packages_images/Evora.jpeg" alt="Lisbon & Évora Historical Journey Package"
+            onerror="this.src='https://placehold.co/600x400/222/ccc?text=Evora+Portugal';">
+        </div>
+        <div class="details">
+          <h2>Lisbon & Évora Historical Journey</h2>
+          <p>✔️ 4 Days / 3 Nights</p>
+          <p>✔️ Combining the capital with the historical city of Évora in the Alentejo region.</p>
+          <p>✔️ Lisbon, Évora.</p>
+          <p>&#128967; Guided tour of Lisbon's highlights.</p>
+          <p>&#128967; Transportation to and from Évora (train or private transfer).</p>
+          <p>&#128967; Guided tour of Évora, a UNESCO World Heritage site, including the Roman Temple, Cathedral, and
+            Chapel of Bones.</p>
+          <p>&#128967; Visit a local winery in the Alentejo region.</p>
+          <p class="price"><strong>₹75,000</strong></p>
+          <button class="book-btn" onclick="window.location.href='book.html'">Book Now</button>
+        </div>
+      </div>
+
+      <div class="package-card" data-country="srilanka">
+        <div class="image-container">
+          <img src="./images/Packages_images/viajes personalizados para viajes a Sri Lanka….jpeg"
+            alt="Cultural Triangle Highlights Sri Lanka"
+            onerror="this.src='https://placehold.co/600x400/222/ccc?text=SriLanka+Culture';">
+        </div>
+        <div class="details">
+          <h2> Cultural Triangle Highlights</h2>
+          <p>✔️ 4 Days / 3 Nights</p>
+          <p>✔️ Ancient history, cultural heritage, and iconic landmarks.</p>
+          <p>✔️ Sigiriya, Polonnaruwa, Dambulla.</p>
+          <p>&#128967; Accommodation in comfortable hotels in the Cultural Triangle area.</p>
+          <p>&#128967; Airport transfers to and from Colombo.</p>
+          <p>&#128967; Transportation in an air-conditioned private vehicle with an English-speaking driver/guide.</p>
+          <p>&#128967; Entrance fees to Sigiriya Rock Fortress, Polonnaruwa ancient city, and Dambulla Cave Temple
+            (costs can vary, factor these in).</p>
+          <p>&#128967; Visit to a spice garden. </p>
+          <p class="price"><strong>₹50,000</strong></p>
+          <button class="book-btn" onclick="window.location.href='book.html'">Book Now</button>
+        </div>
+      </div>
+
+      <div class="package-card" data-country="srilanka">
+        <div class="image-container">
+          <img src="./images/Packages_images/Polonnaruwa, Sri Lanka.jpeg" alt="Kandy & Nuwara Eliya Escape Sri Lanka"
+            onerror="this.src='https://placehold.co/600x400/222/ccc?text=Kandy+SriLanka';">
+        </div>
+        <div class="details">
+          <h2> Kandy & Nuwara Eliya Escape</h2>
+          <p>✔️ 4 Days / 3 Nights</p>
+          <p>✔️ Scenic beauty, tea plantations, and colonial charm.</p>
+          <p>✔️ Kandy, Nuwara Eliya.</p>
+          <p>&#128967; Accommodation in hotels with scenic views in Kandy and Nuwara Eliya.</p>
+          <p>&#128967; Visit to the Temple of the Tooth Relic in Kandy.</p>
+          <p>&#128967; Explore Peradeniya Botanical Gardens.</p>
+          <p>&#128967; Scenic train journey from Kandy to Nuwara Eliya.</p>
+          <p>&#128967; Visit tea plantations and a tea factory.</p>
+          <p>&#128967; Sightseeing in Nuwara Eliya, including Gregory Lake and Victoria Park.</p>
+          <p class="price"><strong>₹45,000</strong></p>
+          <button class="book-btn" onclick="window.location.href='book.html'">Book Now</button>
+        </div>
+      </div>
+
+      <div class="package-card" data-country="srilanka">
+        <div class="image-container">
+          <img src="./images/Packages_images/Strand & zon - Bolivar Beach Bar.jpeg"
+            alt="Beach Bliss in Bentota Sri Lanka"
+            onerror="this.src='https://placehold.co/600x400/222/ccc?text=Bentota+Beach';">
+        </div>
+        <div class="details">
+          <h2>Beach Bliss in Bentota</h2>
+          <p>✔️ 4 Days / 3 Nights</p>
+          <p>✔️ Relaxation, water sports, and coastal activities.</p>
+          <p>✔️ Bentota (southwestern coast).</p>
+          <p>&#128967; Accommodation in a beach resort in Bentota.</p>
+          <p>&#128967; Airport transfers to and from Colombo.</p>
+          <p>&#128967; Transportation in an air-conditioned private vehicle.</p>
+          <p>&#128967; Leisure time on Bentota beach.</p>
+          <p>&#128967; water sports activities (at own cost).</p>
+          <p>&#128967; A boat trip on the Madu River, including a visit to a turtle hatchery.</p>
+          <p>&#128967; Possibly a visit to a spice garden en route.</p>
+          <p>&#128967; Breakfast daily.</p>
+          <p class="price"><strong>₹40,000</strong></p>
+          <button class="book-btn" onclick="window.location.href='book.html'">Book Now</button>
+        </div>
+      </div>
+
+      <div class="package-card" data-country="srilanka">
+        <div class="image-container">
+          <img src="./images/Packages_images/Colombo.jpeg" alt="Colombo & Cultural Introduction Sri Lanka"
+            onerror="this.src='https://placehold.co/600x400/222/ccc?text=Colombo+SriLanka';">
+        </div>
+        <div class="details">
+          <h2> Colombo & Cultural Introduction</h2>
+          <p>✔️ 4 Days / 3 Nights</p>
+          <p>✔️ Exploring the capital city and getting a glimpse of Sri Lankan culture.</p>
+          <p>✔️ Colombo, Pinnawala (day trip).</p>
+          <p>&#128967; Accommodation in a hotel in Colombo.</p>
+          <p>&#128967; Airport transfers.</p>
+          <p>&#128967; Transportation for sightseeing.</p>
+          <p>&#128967; Colombo city tour, including key landmarks like Galle Face Green, Independence Square, and
+            temples.</p>
+          <p>&#128967; A day trip to the Pinnawala Elephant Orphanage.</p>
+          <p>&#128967; Optional shopping excursions.</p>
+          <p>&#128967; Breakfast daily.</p>
+          <p class="price"><strong>₹35,000</strong></p>
+          <button class="book-btn" onclick="window.location.href='book.html'">Book Now</button>
+        </div>
+      </div>
+
+      <div class="package-card" data-country="us">
+        <div class="image-container">
+          <img src="./images/Packages_images/Washington_DC_US.jpeg" alt="East Coast Highlights USA Package"
+            onerror="this.src='https://placehold.co/600x400/222/ccc?text=Washington+DC';">
+        </div>
+        <div class="details">
+          <h2>East Coast Highlights</h2>
+          <p>✔️ 7 Nights 8 Days</p>
+          <p>✔️ New York City, Washington D.C., Niagara Falls (US Side)</p>
+          <p>&#128967; Daily breakfast.</p>
+          <p>&#128967; Accommodation in 3-4 star hotels.</p>
+          <p>&#128967; Guided sightseeing tours of key attractions in each city (e.g., Statue of Liberty ferry, Empire
+            State Building, White House, Lincoln Memorial, Maid of the Mist boat ride).</p>
+          <p>&#128967; Airport transfers and intercity transportation as per the itinerary.</p>
+          <p>&#128967; Visa assistance.</p>
+          <p class="price"><strong>₹3,50,000</strong></p>
+          <button class="book-btn" onclick="window.location.href='book.html'">Book Now</button>
+        </div>
+      </div>
+
+      <div class="package-card" data-country="us">
+        <div class="image-container">
+          <img src="./images/Packages_images/Los-Angalis_US.jpeg" alt="West Coast Explorer USA Package"
+            onerror="this.src='https://placehold.co/600x400/222/ccc?text=Los+Angeles';">
+        </div>
+        <div class="details">
+          <h2>West Coast Explorer</h2>
+          <p>✔️ 9 Nights 10 Days</p>
+          <p>✔️ Los Angeles, Las Vegas, San Francisco</p>
+          <p>&#128967; Daily breakfast.</p>
+          <p>&#128967; Round-trip economy class airfare from a major Indian city.</p>
+          <p>&#128967; Accommodation in 3-4 star hotels.</p>
+          <p>&#128967; Guided tours including Hollywood, the Las Vegas Strip, Golden Gate Bridge, Alcatraz (optional),
+            etc.</p>
+          <p>&#128967; Airport transfers and intercity transportation (flights or coach).</p>
+          <p>&#128967; Some meals might be included depending on the package.</p>
+          <p class="price"><strong>₹4,40,000</strong></p>
+          <button class="book-btn" onclick="window.location.href='book.html'">Book Now</button>
+        </div>
+      </div>
+
+      <div class="package-card" data-country="us">
+        <div class="image-container">
+          <img src="./images/Packages_images/Niagra-falls_US.jpeg" alt="Grand USA Tour Package"
+            onerror="this.src='https://placehold.co/600x400/222/ccc?text=Niagara+Falls';">
+        </div>
+        <div class="details">
+          <h2>Grand USA Tour</h2>
+          <p>✔️ 14 Nights 15 Days</p>
+          <p>✔️ New York, Washington D.C., Niagara Falls, Las Vegas, Los Angeles, San Francisco</p>
+          <p>&#128967; Round-trip economy class airfare.</p>
+          <p>&#128967; Accommodation in 3-4 star hotels.</p>
+          <p>&#128967; Daily breakfast.</p>
+          <p>&#128967; Comprehensive sightseeing tours in each city.</p>
+          <p>&#128967; Intercity flights or comfortable coach transportation.</p>
+          <p>&#128967; Potentially some additional activities or meals.</p>
+          <p class="price"><strong>₹5,50,000</strong></p>
+          <button class="book-btn" onclick="window.location.href='book.html'">Book Now</button>
+        </div>
+      </div>
+
+      <div class="package-card" data-country="us">
+        <div class="image-container">
+          <img src="./images/Packages_images/San-Francisco_US.jpeg" alt="California & Hawaii Combo USA Package"
+            onerror="this.src='https://placehold.co/600x400/222/ccc?text=San+Francisco';">
+        </div>
+        <div class="details">
+          <h2>California & Hawaii Combo</h2>
+          <p>✔️ 12 Nights 13 Days</p>
+          <p>✔️ Los Angeles/San Francisco, Honolulu (Oahu).</p>
+          <p>&#128967; Round-trip economy class airfare from India to California and inter-island flights to Hawaii.</p>
+          <p>&#128967; Accommodation in 3-4 star hotels.</p>
+          <p>&#128967; Daily breakfast.</p>
+          <p>&#128967; Sightseeing tours in California (e.g., Hollywood, Golden Gate Bridge) and Oahu (e.g., Pearl
+            Harbor, Waikiki Beach).</p>
+          <p>&#128967; Airport transfers.</p>
+          <p class="price"><strong>₹6,00,000</strong></p>
+          <button class="book-btn" onclick="window.location.href='book.html'">Book Now</button>
+        </div>
+      </div>
+
+      <div class="package-card" data-country="uk">
+        <div class="image-container">
+          <img src="./images/Packages_images/UK1.jpeg" alt="London Delights UK Package"
+            onerror="this.src='https://placehold.co/600x400/222/ccc?text=London+UK';">
+        </div>
+        <div class="details">
+          <h2>London Delights</h2>
+          <p>✔️ 3 Nights 4 Days</p>
+          <p>✔️ 3 Nights accommodation in London based on the hotel category selected or similar</p>
+          <p>✔️ Daily Breakfast</p>
+          <p>&#128967; Capital of England</p>
+          <p>&#128967; London: Hop on Hop Off Bus Tour</p>
+          <p>&#128967; Madame Tussauds With Marvel 4d Cinema And Star Wars Experience</p>
+          <p>&#128967; Depart London</p>
+          <p class="price"><strong> ₹84,600</strong></p>
+          <button class="book-btn" onclick="window.location.href='book.html'">Book Now</button>
+        </div>
+      </div>
+
+      <div class="package-card" data-country="uk">
+        <div class="image-container">
+          <img src="./images/Packages_images/uk2.jpeg" alt="London Paris Delights Package"
+            onerror="this.src='https://placehold.co/600x400/222/ccc?text=London+Paris';">
+        </div>
+        <div class="details">
+          <h2>London Paris Delights</h2>
+          <p>✔️ 6 Nights 7 Days</p>
+          <p>✔️ Interactive City Tour, Seine Cruise and Eiffel Tower 2nd Floor with Priority Access </p>
+          <p>✔️ Daily Breakfast</p>
+          <p>&#128967; Capital Of England</p>
+          <p>&#128967; London: Hop On Hop Off Bus Tour | Madame Tussauds | London Eye | Tower Of London</p>
+          <p>&#128967; Madame Tussauds With Marvel 4d Cinema And Star Wars Experience</p>
+          <p>&#128967; Paris</p>
+          <p>&#128967; Paris City Tour + River Seine Cruise + Eiffel Tower Tour </p>
+          <p>&#128967; Disneyland® Paris</p>
+          <p>&#128967; Depart Paris</p>
+          <p class="price"><strong> ₹1,74,000</strong></p>
+          <button class="book-btn" onclick="window.location.href='book.html'">Book Now</button>
+        </div>
+      </div>
+
+      <div class="package-card" data-country="uk">
+        <div class="image-container">
+          <img src="./images/Packages_images/UK3.jpeg" alt="UK With Scotland Package"
+            onerror="this.src='https://placehold.co/600x400/222/ccc?text=UK+Scotland';">
+        </div>
+        <div class="details">
+          <h2>UK With Scotland</h2>
+          <p>✔️ 8 Nights 9 Days</p>
+          <p>✔️ Day trip to Windsor Castle, Stonehenge & Bath </p>
+          <p>✔️ Daily Breakfast</p>
+          <p>&#128967; Arrive London, United Kingdom</p>
+          <p>&#128967; London Eye & Thames River Cruise Ticket + Tower Of London</p>
+          <p>&#128967; Day Trip To Windsor Castle, Stonehenge & Bath</p>
+          <p>&#128967; London To Windermere : Lake District</p>
+          <p>&#128967; Full Day Tour Of Lake District</p>
+          <p>&#128967; England To Scotland <> Lake District To Edinburgh</p>
+          <p>&#128967; Guided City Tour Of Edinburgh + Visit To Edinburgh Castle</p>
+          <p>&#128967; Day Trip To Lochness, Glencoe & Highlands</p>
+          <p>&#128967; Depart For Edinburgh Airport</p>
+          <p class="price"><strong> ₹4,00,000</strong></p>
+          <button class="book-btn" onclick="window.location.href='book.html'">Book Now</button>
+        </div>
+      </div>
+
+      <div class="package-card" data-country="uk">
+        <div class="image-container">
+          <img src="./images/Packages_images/Windsor Castle_UK4.jpeg" alt="Edinburgh & Scottish Charm Package"
+            onerror="this.src='https://placehold.co/600x400/222/ccc?text=Edinburgh+UK';">
+        </div>
+        <div class="details">
+          <h2>Edinburgh & Scottish Charm</h2>
+          <p>✔️ 4 Days / 3 Nights</p>
+          <p>✔️ Edinburgh, possibly a short excursion to the Scottish Highlands.</p>
+          <p>&#128967; Exploring Scotland's historic capital and its unique culture.</p>
+          <p>&#128967; Guided tour of Edinburgh Castle and the Royal Mile.</p>
+          <p>&#128967; Visit to Holyrood Palace.</p>
+          <p>&#128967; Explore the Old Town and New Town, both UNESCO World Heritage sites.</p>
+          <p>&#128967; A day trip to the Scottish Highlands (Loch Ness, Glencoe) or a whisky distillery tour.</p>
+          <p class="price"><strong> ₹90,000</strong></p>
+          <button class="book-btn" onclick="window.location.href='book.html'">Book Now</button>
+        </div>
+      </div>
+
+
+      <div class="package-card" data-country="thailand">
+        <div class="image-container">
+          <img src="./images/Packages_images/Bankok_thailand.jpeg" alt="Bangkok & Hua Hin - City & Relaxing Coast"
+            onerror="this.src='https://placehold.co/600x400/222/ccc?text=Bangkok+%26+Hua+Hin';">
+        </div>
+        <div class="details">
+          <h2>Bangkok & Hua Hin - "City & Relaxing Coast"</h2>
+          <p>✔️ 4 Nights / 5 Days</p>
+          <p>✔️ 2 Nights Bangkok, 2 Nights Hua Hin ( quieter coastal town)</p>
+          <p>&#128967; Hua Hin: Relaxation time on the beach, visit to the night market.</p>
+          <p>&#128967; Day trips to nearby attractions in Hua Hin.</p>
+          <p>&#128967; Bangkok: City tour (Grand Palace, temples).</p>
+          <p class="price"><strong> ₹40,000</strong></p>
+          <button class="book-btn" onclick="window.location.href='book.html'">Book Now</button>
+        </div>
+      </div>
+
+      <div class="package-card" data-country="thailand">
+        <div class="image-container">
+          <img src="./images/Packages_images/Krabi_thailand.jpeg" alt="Krabi & Phuket - Beaches & Limestone Cliffs"
+            onerror="this.src='https://placehold.co/600x400/222/ccc?text=Krabi+%26+Phuket';">
+        </div>
+        <div class="details">
+          <h2>Krabi & Phuket - "Beaches & Limestone Cliffs"</h2>
+          <p>✔️ 4 Nights / 5 Days</p>
+          <p>&#128967; Krabi: 4 Islands tour by long-tail boat (includes Railay Beach, Phra Nang Cave, Chicken Island,
+            Tub Island).</p>
+          <p>&#128967; Phuket: Phi Phi Island tour (as mentioned in Package 2).</p>
+          <p>&#128967; Inter-island transfer (ferry or speedboat).</p>
+          <p class="price"><strong> ₹65,000</strong></p>
+          <button class="book-btn" onclick="window.location.href='book.html'">Book Now</button>
+        </div>
+      </div>
+
+      <div class="package-card" data-country="thailand">
+        <div class="image-container">
+          <img src="./images/Packages_images/Phuket_thailand.jpeg" alt="Phuket - Island Paradise"
+            onerror="this.src='https://placehold.co/600x400/222/ccc?text=Phuket';">
+        </div>
+        <div class="details">
+          <h2> Phuket - "Island Paradise"</h2>
+          <p>✔️ 4 Nights / 5 Days</p>
+          <p>✔️ Phuket (Island with multiple beaches)</p>
+          <p>&#128967; Phi Phi Island tour by speedboat (includes Maya Bay*, snorkeling).</p>
+          <p>&#128967; Maya Bay might have restricted access for environmental reasons; alternative similar locations
+            will be
+            included.</p>
+          <p>&#128967; Phuket city tour, James Bond Island tour, water sports activities.</p>
+          <p class="price"><strong> ₹60,000</strong></p>
+          <button class="book-btn" onclick="window.location.href='book.html'">Book Now</button>
+        </div>
+      </div>
+
+      <div class="package-card" data-country="thailand">
+        <div class="image-container">
+          <img src="./images/Packages_images/Pattaya_thailand.jpeg" alt="Pattaya & Bangkok"
+            onerror="this.src='https://placehold.co/600x400/222/ccc?text=Pattaya+%26+Bangkok';">
+        </div>
+        <div class="details">
+          <h2>Pattaya & Bangkok</h2>
+          <p>✔️ 4 Nights / 5 Days</p>
+          <p>✔️ 2 Nights Pattaya (Coastal City), 2 Nights Bangkok (Capital with River)</p>
+          <p>&#128967; Pattaya: Coral Island tour with lunch (includes speedboat ride and water sports options).</p>
+          <p>&#128967; Pattaya: Alcazar Cabaret Show (optional).</p>
+          <p>&#128967; Bangkok: Half-day city tour including temples (Wat Arun, Wat Pho).</p>
+          <p>&#128967; Bangkok: Chao Phraya River cruise (optional dinner cruise).</p>
+          <p class="price"><strong> ₹45,000</strong></p>
+          <button class="book-btn" onclick="window.location.href='book.html'">Book Now</button>
+        </div>
+      </div>
+
+      <div class="package-card" data-country="india">
+        <div class="image-container">
+          <img src="./images/Packages_images/Kerala_india.jpeg" alt="Kerala"
+            onerror="this.src='https://placehold.co/600x400/222/ccc?text=Kerala';">
+        </div>
+        <div class="details">
+          <h2>Kerala</h2>
+          <p>✔️ 7 Days</p>
+          <p>&#128967; The serene backwaters of Alleppey (Alappuzha).</p>
+          <p>&#128967; Kumarakom on houseboats.</p>
+          <p>&#128967; Enjoy the beaches of Kovalam and Varkala</p>
+          <p>&#128967; Experience the lush greenery of Munnar's tea plantations or Wayanad's hills.</p>
+          <p>&#128967; Ayurvedic treatments and Kathakali dance performances are often included.</p>
+          <p class="price"><strong>₹15,000</strong></p>
+          <button class="book-btn" onclick="window.location.href='book.html'">Book Now</button>
+        </div>
+      </div>
+
+      <div class="package-card" data-country="india">
+        <div class="image-container">
+          <img src="./images/Packages_images/Rajasthan_india.jpeg" alt="Rajasthan - The Land of Kings"
+            onerror="this.src='https://placehold.co/600x400/222/ccc?text=Rajasthan';">
+        </div>
+        <div class="details">
+          <h2>Rajasthan - The Land of Kings</h2>
+          <p>✔️ 4 Nights / 5 Days</p>
+          <p>&#128967; Discover the majestic forts and palaces of Jaipur, Udaipur (the "City of Lakes"), Jodhpur
+            (the "Blue City"), and Jaisalmer (the "Golden City").</p>
+          <p>&#128967; Experience the vibrant culture, desert landscapes, and traditional Rajasthani cuisine.</p>
+          <p>&#128967; Camel safaris in the Thar Desert are a popular activity.</p>
+          <p class="price"><strong>₹20,000</strong></p>
+          <button class="book-btn" onclick="window.location.href='book.html'">Book Now</button>
+        </div>
+      </div>
+
+      <div class="package-card" data-country="india">
+        <div class="image-container">
+          <img src="./images/Packages_images/Kashmr_india.jpeg" alt="Kashmir - Paradise on Earth"
+            onerror="this.src='https://placehold.co/600x400/222/ccc?text=Kashmir';">
+        </div>
+        <div class="details">
+          <h2>Kashmir - Paradise on Earth</h2>
+          <p>✔️ 7 Days</p>
+          <p>&#128967; Experience the stunning valleys of Srinagar, Gulmarg (for skiing in winter and Gondola
+            rides), and Pahalgam (known for its scenic beauty).</p>
+          <p>&#128967; Enjoy a Shikara ride on Dal Lake, visit Mughal gardens, and explore the local handicrafts.
+          </p>
+          <p class="price"><strong>₹25,000</strong></p>
+          <button class="book-btn" onclick="window.location.href='book.html'">Book Now</button>
+        </div>
+      </div>
+
+      <div class="package-card" data-country="india">
+        <div class="image-container">
+          <img src="./images/Packages_images/Himachal_india (2).jpeg" alt="Himachal Pradesh"
+            onerror="this.src='https://placehold.co/600x400/222/ccc?text=Himachal+Pradesh';">
+        </div>
+        <div class="details">
+          <h2>Himachal Pradesh</h2>
+          <p>✔️ 6 Days</p>
+          <p>&#128967; Explore popular hill stations like Shimla, Manali (known for adventure activities like
+            paragliding and river rafting), Dharamshala (home to the Dalai Lama), and McLeod Ganj. Enjoy scenic
+            drives, trekking, and breathtaking mountain views.</p>
+          <p class="price"><strong>₹30,000</strong></p>
+          <button class="book-btn" onclick="window.location.href='book.html'">Book Now</button>
+        </div>
+      </div>
+
+
+
+    </div>
+    <!-- <div id="pagination-controls" style="text-align:center; margin-top: 30px;"></div> -->
+  </section>
+
+  <footer>
+    <p>Contact us at: support@travelwithus.com | +971 123 456 789</p>
+    <div class="socials">
+      <a href="https://www.facebook.com" target="_blank" rel="noopener noreferrer"><img src="./images/facebook.png"
+          alt="Facebook" onerror="this.src='https://placehold.co/24x24/333/ccc?text=FB';"></a>
+      <a href="https://www.instagram.com" target="_blank" rel="noopener noreferrer"><img src="images/instagram.png"
+          alt="Instagram" onerror="this.src='https://placehold.co/24x24/333/ccc?text=IG';"></a>
+      <a href="https://www.twitter.com" target="_blank" rel="noopener noreferrer"><img src="images/social_13051786.png"
+          alt="Twitter" onerror="this.src='https://placehold.co/24x24/333/ccc?text=TW';"></a>
+    </div>
+    <p>&copy; 2025 Tour&Travel. All rights reserved.</p>
+  </footer>
+
+  <script>
+
+    // const packagesPerPage = 6;
+    // const packages = Array.from(document.querySelectorAll('.package-card'));
+    // const totalPages = Math.ceil(packages.length / packagesPerPage);
+    // const packagesGrid = document.querySelector('.packages-grid');
+
+    // function showPage(page) {
+    //   packages.forEach((pkg, i) => {
+    //     pkg.style.display = (i >= (page - 1) * packagesPerPage && i < page * packagesPerPage) ? 'block' : 'none';
+    //   });
+    //   updatePaginationControls(page);
+    // }
+
+    // function updatePaginationControls(currentPage) {
+    //   const paginationContainer = document.getElementById('pagination-controls');
+    //   paginationContainer.innerHTML = '';
+
+    //   for (let i = 1; i <= totalPages; i++) {
+    //     const btn = document.createElement('button');
+    //     btn.textContent = i;
+    //     btn.className = 'pagination-btn' + (i === currentPage ? ' active' : '');
+    //     btn.onclick = () => showPage(i);
+    //     paginationContainer.appendChild(btn);
+    //   }
+    // }
+
+    // document.addEventListener('DOMContentLoaded', () => {
+    //   showPage(1);
+    // });
+
+
+    document.addEventListener('DOMContentLoaded', function () {
+      const filterButtons = document.querySelectorAll('.filter-btn');
+      const packageCards = document.querySelectorAll('.package-card'); 
+
+      filterButtons.forEach(button => {
+        button.addEventListener('click', function () {
+          const filter = this.getAttribute('data-filter');
+
+      
+          filterButtons.forEach(btn => btn.classList.remove('active'));
+          this.classList.add('active');
+
+         
+          packageCards.forEach(card => {
+            if (filter === 'all' || card.getAttribute('data-country') === filter) {
+              card.style.display = 'flex'; 
+            } else {
+              card.style.display = 'none';
+            }
+          });
+        });
+      });
+    });
+  </script>
+</body>
+
+</html>

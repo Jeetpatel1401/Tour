@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Checkout Page</title>
+  <style>
+    * {
+      box-sizing: border-box;
+      font-family: 'Segoe UI', sans-serif;
+    }
+
+    body {
+      margin: 0;
+      padding: 40px;
+      background-color: #1a1a1a;
+      color: #333;
+    }
+
+    .container {
+      background: #ecf0f1;
+      padding: 20px 30px;
+      border-radius: 10px;
+      max-width: 900px;
+      margin: auto;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 20px;
+    }
+
+    .column {
+      flex: 1;
+      min-width: 300px;
+    }
+
+    h3 {
+      margin-bottom: 15px;
+    }
+
+    label {
+      display: block;
+      margin-bottom: 6px;
+      font-weight: 600;
+    }
+
+    input, select {
+      width: 100%;
+      padding: 10px;
+      margin-bottom: 14px;
+      border-radius: 6px;
+      border: 1px solid #bdc3c7;
+    }
+
+    .accepted-cards img {
+      height: 30px;
+      margin-right: 8px;
+    }
+
+    button {
+      background: #34495e;
+      color: #fff;
+      padding: 14px;
+      border: none;
+      border-radius: 6px;
+      font-size: 16px;
+      cursor: pointer;
+      width: 100%;
+      margin-top: 10px;
+    }
+
+    button:hover {
+      background: #2c3e50;
+    }
+
+    .success-message {
+      display: none;
+      text-align: center;
+      margin-top: 20px;
+      color: #27ae60;
+      font-weight: bold;
+    }
+  </style>
+</head>
+<body>
+
+<div class="container">
+  <div class="column">
+    <h3>Billing Address</h3>
+    <label>Full Name</label>
+    <input type="text" id="fullName" placeholder="Enter name" required>
+
+    <label>Email</label>
+    <input type="email" id="email" placeholder="Enter email" required>
+
+    <label>Address</label>
+    <input type="text" id="address" placeholder="Enter address" required>
+
+    <label>City</label>
+    <input type="text" id="city" placeholder="Enter city" required>
+
+    <label>State</label>
+    <select id="state" required>
+      <option value="">Choose State</option>
+      <option>California</option>
+      <option>New York</option>
+      <option>Texas</option>
+      <option>Florida</option>
+    </select>
+
+    <label>Zip Code</label>
+    <input type="text" id="zip" placeholder="7-digit code" maxlength="7" required>
+  </div>
+
+  <div class="column">
+    <h3>Payment</h3>
+    <label>Accepted Cards</label>
+    <div class="accepted-cards">
+      <img src="https://img.icons8.com/color/48/000000/visa.png"/>
+      <img src="https://img.icons8.com/color/48/000000/mastercard.png"/>
+      <img src="https://img.icons8.com/color/48/000000/amex.png"/>
+    </div>
+
+    <label>Credit Card Number</label>
+    <input type="text" id="cardNumber" placeholder="Enter card number" maxlength="19" required>
+
+    <label>Exp Month</label>
+    <input type="text" id="expMonth" placeholder="MM" maxlength="2" required>
+
+    <label>Exp Year</label>
+    <input type="text" id="expYear" placeholder="YYYY" maxlength="4" required>
+
+    <label>CVV</label>
+    <input type="text" id="cvv" placeholder="CVV" maxlength="4" required>
+
+    <button id="checkoutBtn">Proceed to Checkout</button>
+    <div class="success-message" id="successMessage">Payment Successful!</div>
+  </div>
+</div>
+
+<script>
+  document.getElementById('checkoutBtn').addEventListener('click', function() {
+    // Basic validation
+    const requiredFields = ['fullName', 'email', 'address', 'city', 'state', 'zip', 'cardNumber', 'expMonth', 'expYear', 'cvv'];
+    let isValid = true;
+
+    requiredFields.forEach(id => {
+      const field = document.getElementById(id);
+      if (!field.value.trim()) {
+        isValid = false;
+        field.style.border = '1px solid red';
+      } else {
+        field.style.border = '1px solid #bdc3c7';
+      }
+    });
+
+    if (!isValid) {
+      alert('Please fill in all fields.');
+      return;
+    }
+
+    // Show success message
+    document.getElementById('successMessage').style.display = 'block';
+  });
+
+  // Auto-format credit card number input
+  document.getElementById('cardNumber').addEventListener('input', function(e) {
+    let value = e.target.value.replace(/\D/g, '').substring(0,16);
+    let formatted = value.replace(/(.{4})/g, '$1 ').trim();
+    e.target.value = formatted;
+  });
+</script>
+
+</body>
+</html>

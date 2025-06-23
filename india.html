@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Website Packages | Satej Infotech</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<style>
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+    }
+
+    body {
+        font-family: Arial;
+        background-color: white;
+        color: white;
+    }
+
+    header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 20px 50px;
+        background: rgb(0, 0, 0);
+        width: 100%;
+        top: 20px;
+    }
+
+    .logo-container {
+        display: flex;
+        align-items: center;
+    }
+
+    .logo-container img {
+        height: 40px;
+        margin-right: 10px;
+    }
+
+    header h1 {
+        font-size: 28px;
+    }
+
+    nav a {
+        margin: 0 15px;
+        color: white;
+        text-decoration: none;
+        font-weight: bold;
+        transition: color 0.3s;
+    }
+
+    nav a:hover {
+        color: #ffcc00;
+    }
+
+    body {
+        font-family: 'Segoe UI', sans-serif;
+        margin: 0;
+        background: #1a1a1a;
+        color: white;
+    }
+
+    .packages-section {
+        text-align: center;
+        padding: 30px 20px;
+    }
+
+    .packages-section h1 {
+        font-size: 36px;
+        margin-bottom: 20px;
+        color: white;
+    }
+
+    .packages {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 20px;
+    }
+
+    .package-card {
+        width: 270px;
+        border-radius: 10px;
+        padding: 20px;
+        color: #F0F0F0;
+        text-align: left;
+        box-shadow: 0 4px 14px rgba(0, 0, 0, 0.1);
+        display: flex;
+        /* Enable flexbox for content alignment */
+        flex-direction: column;
+        /* Stack content vertically */
+    }
+
+    .package-card img {
+        width: 100%;
+        height: auto;
+        border-radius: 12px 12px 0 0;
+        margin-bottom: 10px;
+        /* Add some space below the image */
+    }
+
+    .package-card h2 {
+        font-size: 20px;
+        margin-bottom: 14px;
+    }
+
+    .package-card p {
+        margin: 8px 0;
+        line-height: 1.5;
+    }
+
+    .book-btn {
+        background-color: #000000;
+        color: #FFD369;
+        border: none;
+        padding: 12px 25px;
+        font-size: 1em;
+        border-radius: 8px;
+        cursor: pointer;
+        width: 100%;
+        transition: background-color 0.3s ease;
+        margin-top: auto;
+        /* Push the button to the bottom */
+    }
+
+
+    .price {
+        font-size: 22px;
+        font-weight: bold;
+        margin-top: 12px;
+    }
+
+    .time {
+        font-size: 16px;
+        margin-top: 6px;
+    }
+
+    .blue {
+        background: #3B3C55;
+    }
+
+    .sky {
+        background: #3D6E70;
+    }
+
+    .green {
+        background: #DFA878;
+    }
+
+    .light-purple {
+        background: #a9a0bd;
+    }
+
+    footer {
+        margin-top: 50px;
+        padding: 30px 20px;
+        background: #333;
+        color: #fff;
+        text-align: center;
+    }
+
+    footer h3 {
+        margin-bottom: 12px;
+    }
+
+    footer p {
+        margin: 6px 0;
+    }
+
+    /* Responsive */
+    @media (max-width: 768px) {
+        .packages {
+            flex-direction: column;
+            align-items: center;
+        }
+    }
+
+    .book-btn:hover {
+        background-color: #333;
+    }
+
+    footer {
+        background: #333;
+        color: #ccc;
+        padding: 40px;
+        text-align: center;
+    }
+
+    .socials img {
+        height: 24px;
+        margin: 0 10px;
+        filter: grayscale(1);
+        transition: filter 0.3s;
+    }
+
+    .socials img:hover {
+        filter: grayscale(0);
+    }
+</style>
+
+<body>
+
+    <header>
+        <div class="logo-container">
+            <a href="Tour&Travel.html"><img src="images/HomePage_Logo.png" alt="logo" /></a>
+            <h2>Tour&Travel</h2>
+        </div>
+        <nav>
+            <a href="Tour&Travel.html">Home</a>
+            <a href="aboutus.html">Services</a>
+        </nav>
+    </header>
+
+    <section class="packages-section">
+        <h1>India Packages</h1>
+        <div class="packages">
+
+            <div class="package-card blue">
+                <img src="./images/Packages_images/Kerala_india.jpeg" alt="india-packages">
+                <h2>Kerala</h2>
+                <p>✔️ 7 Days </p>
+                <p>&#128967; The serene backwaters of Alleppey (Alappuzha).</p>
+                <p>&#128967; Kumarakom on houseboats.</p>
+                <p>&#128967; Enjoy the beaches of Kovalam and Varkala</p>
+                <p>&#128967; Experience the lush greenery of Munnar's tea plantations or Wayanad's hills.</p>
+                <p>&#128967; Ayurvedic treatments and Kathakali dance performances are often included.</p>
+                <p class="price"><strong>₹15,000</strong></p>
+                <button class="book-btn" onclick="window.location.href='book.html'">Book Now</button>
+            </div>
+
+            <div class="package-card sky">
+                <img src="./images/Packages_images/Rajasthan_india.jpeg" alt="india-packages">
+                <h2>Rajasthan - The Land of Kings</h2>
+                <p>✔️ 4 Night 5 Days</p>
+                <p>&#128967; Discover the majestic forts and palaces of Jaipur, Udaipur (the "City of Lakes"), Jodhpur
+                    (the "Blue City"), and Jaisalmer (the "Golden City").</p>
+                <p>&#128967; Experience the vibrant culture, desert landscapes, and traditional Rajasthani cuisine.</p>
+                <p>&#128967; Camel safaris in the Thar Desert are a popular activity.</p>
+                <p class="price"><strong>₹20,000</strong></p>
+                <button class="book-btn" onclick="window.location.href='book.html'">Book Now</button>
+            </div>
+
+            <div class="package-card green">
+                <img src="./images/Packages_images/Kashmr_india.jpeg" alt="india-packages">
+                <h2>Kashmir - Paradise on Earth</h2>
+                <p>✔️ 7 Days</p>
+                <p>&#128967; Experience the stunning valleys of Srinagar, Gulmarg (for skiing in winter and Gondola
+                    rides), and Pahalgam (known for its scenic beauty).</p>
+                <p>&#128967; Enjoy a Shikara ride on Dal Lake, visit Mughal gardens, and explore the local handicrafts.
+                </p>
+                <p class="price"><strong>₹25,000</strong></p>
+                <button class="book-btn" onclick="window.location.href='book.html'">Book Now</button>
+            </div>
+
+            <div class="package-card light-purple">
+                <img src="./images/Packages_images/Himachal_india (2).jpeg" alt="US-packages">
+                <h2>Himachal Pradesh</h2>
+                <p>✔️ 6 Days</p>
+                <p>&#128967; Explore popular hill stations like Shimla, Manali (known for adventure activities like
+                    paragliding and river rafting), Dharamshala (home to the Dalai Lama), and McLeod Ganj. Enjoy scenic
+                    drives, trekking, and breathtaking mountain views. </p>
+                <p>&#128967; </p>
+                <p class="price"><strong>₹30,000</strong></p>
+                <button class="book-btn" onclick="window.location.href='book.html'">Book Now</button>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <p>Contact us at: support@travelwithus.com | +971 123 456 789</p>
+        <div class="socials">
+            <a href="https://www.facebook.com"><img src="./images/facebook.png" alt="Facebook" /></a>
+            <a href="https://www.instagram.com"><img src="images/instagram.png" alt="Instagram" /></a>
+            <a href="https://www.twitter.com"><img src="images/social_13051786.png" alt="Twitter" /></a>
+        </div>
+        <p>&copy; 2025 Tours Website. All rights reserved.</p>
+    </footer>
+
+</body>
+
+</html>

@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Travel Agency Services</title>
+</head>
+<style>
+     * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Arial', sans-serif;
+      background-color: #0a0a0a;
+      color: #fff;
+      line-height: 1.6;
+    }
+
+    header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 20px 50px;
+      background: rgba(0, 0, 0, 0.85);
+      width: 100%;
+      top: 0;
+      z-index: 1000;
+    }
+
+    .logo-container {
+      display: flex;
+      align-items: center;
+    }
+
+    .logo-container img {
+      height: 40px;
+      margin-right: 10px;
+    }
+
+    header h1 {
+      font-size: 28px;
+      color: #ffcc00;
+    }
+
+    nav a {
+      margin: 0 15px;
+      color: whitesmoke;
+      text-decoration: none;
+      font-weight: bold;
+      transition: color 0.3s ease;
+      cursor: pointer;
+    }
+
+    nav a:hover,
+    nav a.active-nav {
+      color: #ffcc00;
+    }
+
+
+    .hero {
+        background-color: #1a1a1a;
+        color: #fff;
+        padding: 80px 20px;
+        text-align: center;
+        background-size: cover;
+        background-position: center bottom;
+    }
+
+    .hero-content {
+        max-width: 800px;
+        margin: 0 auto;
+    }
+
+    .hero h1 {
+        font-size: 2.5em;
+        margin-bottom: 10px;
+    }
+
+    .hero p {
+        font-size: 1.1em;
+        line-height: 1.6;
+    }
+
+    .services {
+        display: flex;
+        justify-content: center;
+        padding: 40px 20px;
+        gap: 20px;
+        background-color: #1a1a1a;
+        
+    }
+
+    .service-card {
+        background-color: #ffd3ac;
+        color:black;
+        border-radius: 8px;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        padding: 20px;
+        text-align: center;
+        width: 300px;
+    }
+
+    .icon {
+        width: 80px;
+        height: 80px;
+        margin: 0 auto 15px;
+        /* You might style the icon container further depending on how you implement icons */
+    }
+
+    .icon img {
+        max-width: 100%;
+        height: auto;
+    }
+
+    .service-card h3 {
+        color: #2c3e50;
+        margin-bottom: 10px;
+    }
+
+    .service-card p {
+        font-size: 0.95em;
+        line-height: 1.5;
+        color: #555;
+        margin-bottom: 15px;
+    }
+
+    .button {
+        background-color: #4dabf5;
+        /* Blue button color */
+        color: #fff;
+        border: none;
+        padding: 10px 20px;
+        border-radius: 5px;
+        cursor: pointer;
+        font-size: 1em;
+        transition: background-color 0.3s ease;
+    }
+
+    .button:hover {
+        background-color: #039be5;
+    }
+
+    /* Responsive adjustments */
+    @media (max-width: 768px) {
+        .services {
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .service-card {
+            width: 90%;
+            max-width: 400px;
+        }
+    }
+</style>
+
+<body>
+    <header>
+        <div class="logo-container">
+            <a href="Tour&Travel.html"><img src="images/HomePage_Logo.png" alt="logo" /></a>
+            <h2>Travel With US</h2>
+        </div>
+        <nav>
+            <a href="Tour&Travel.html">Home</a>
+            <a href="explore.html">Explore</a>
+            <a href="contectus.html">contectus</a>
+
+        </nav>
+    </header>
+
+<div>
+    <div class="hero">
+        <div class="hero-content">
+            <h1>Travel Agency Services</h1>
+            <p>Our greatest expertise is in the regions we visit with our tours as well as most of Italy, where we live.
+                We often provide travel services to our guests for personal travel planning before or after tours with
+                The Blue Walk. We are also happy to assist other travel needs.</p>
+        </div>
+    </div>
+
+    <section class="services">
+        <div class="service-card">
+            <div class="icon">
+                <img src="./images/summer-travel-removebg-preview.png" alt="Summer Travel">
+            </div>
+            <h3>SUMMER TRAVEL</h3>
+            <p>Escape the everyday and soak up the sun on our unforgettable summer adventures. Discover vibrant
+                destinations and create lasting memories under clear blue skies.</p>
+        </div>
+
+        <div class="service-card">
+            <div class="icon">
+                <img src="./images/active-tour-removebg-preview.png" alt="Active Tours">
+            </div>
+            <h3>ACTIVE TOURS</h3>
+            <p>Except that they are blinded by desire, they are at fault who abandon their duties, which softens the
+                soul, that is, by labor.</p>
+        </div>
+
+        <div class="service-card">
+            <div class="icon">
+                <img src="./images/about-us-removebg-preview.png" alt="About US">
+            </div>
+            <h3>About US</h3>
+            <p>we create experiences. Every trip is picked
+                for its experience, memories, and freedom, while our team is dedicated to ensuring you
+                enjoy the highest standard of service from booking to drop-off.</p>
+        </div>
+    </section>
+</div>
+    <script src="script.js"></script>
+</body>
+
+</html>

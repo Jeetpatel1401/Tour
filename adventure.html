@@ -1,0 +1,431 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Experiences</title>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial;
+            background-color: white;
+            color: white;
+        }
+
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 50px;
+            background: rgb(0, 0, 0);
+            width: 100%;
+            top: 20px;
+        }
+
+        .logo-container {
+            display: flex;
+            align-items: center;
+        }
+
+        .logo-container img {
+            height: 40px;
+            margin-right: 10px;
+        }
+
+        header h1 {
+            font-size: 28px;
+        }
+
+        nav a {
+            margin: 0 15px;
+            color: white;
+            text-decoration: none;
+            font-weight: bold;
+            transition: color 0.3s;
+        }
+
+        nav a:hover {
+            color: #ffcc00;
+        }
+
+        body {
+            font-family: 'Segoe UI', sans-serif;
+            margin: 0;
+            background: #1a1a1a;
+            color: white;
+        }
+
+        .packages-section {
+            text-align: center;
+            padding: 30px 20px;
+        }
+
+        .packages-section h1 {
+            font-size: 36px;
+            margin-bottom: 20px;
+            color: white;
+        }
+
+        .packages {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 20px;
+        }
+
+        .package-card {
+            width: 270px;
+            border-radius: 10px;
+            padding: 20px;
+            color: #F0F0F0;
+            text-align: left;
+            box-shadow: 0 4px 14px rgba(0, 0, 0, 0.1);
+            display: flex;
+            flex-direction: column;
+        }
+
+        .package-card img {
+            width: 100%;
+            height: auto;
+            border-radius: 12px 12px 0 0;
+            margin-bottom: 10px;
+        }
+
+        .package-card h2 {
+            font-size: 20px;
+            margin-bottom: 14px;
+        }
+
+        .package-card p {
+            margin: 8px 0;
+            line-height: 1.5;
+        }
+
+        .book-btn {
+            background-color: #000000;
+            color: #FFD369;
+            border: none;
+            padding: 12px 25px;
+            font-size: 1em;
+            border-radius: 8px;
+            cursor: pointer;
+            width: 100%;
+            transition: background-color 0.3s ease;
+            margin-top: auto;
+        }
+
+        .price {
+            font-size: 22px;
+            font-weight: bold;
+            margin-top: 12px;
+        }
+
+        .time {
+            font-size: 16px;
+            margin-top: 6px;
+        }
+
+        .blue {
+            background: #3B3C55;
+        }
+
+        .sky {
+            background: #3D6E70;
+        }
+
+        .green {
+            background: #DFA878;
+        }
+
+        .light-purple {
+            background: #AFAAB9;
+        }
+
+        footer {
+            margin-top: 50px;
+            padding: 30px 20px;
+            background: #333;
+            color: #fff;
+            text-align: center;
+        }
+
+        footer h3 {
+            margin-bottom: 12px;
+        }
+
+        footer p {
+            margin: 6px 0;
+        }
+
+        @media (max-width: 768px) {
+            .packages {
+                flex-direction: column;
+                align-items: center;
+            }
+        }
+
+        .book-btn:hover {
+            background-color: #333;
+        }
+
+        footer {
+            background: #333;
+            color: #ccc;
+            padding: 40px;
+            text-align: center;
+        }
+
+        .socials img {
+            height: 24px;
+            margin: 0 10px;
+            filter: grayscale(1);
+            transition: filter 0.3s;
+        }
+
+        .socials img:hover {
+            filter: grayscale(0);
+        }
+
+        .card-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 20px;
+            padding: 30px 20px;
+        }
+
+        .experience-card {
+            background: #2c2c2c;
+            color: #f0f0f0;
+            border-radius: 12px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+            overflow: hidden;
+            width: 280px;
+            display: flex;
+            flex-direction: column;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .experience-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 18px rgba(0, 0, 0, 0.3);
+        }
+
+        .experience-card img {
+            width: 100%;
+            height: 180px;
+            object-fit: cover;
+        }
+
+        .experiences h2 {
+            text-align: center;
+            font-size: 34px;
+            margin: 40px 0 20px;
+            color: #FFD369;
+        }
+
+        .card-content {
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            flex-grow: 1;
+        }
+
+        .card-content h3 {
+            margin: 8px 0;
+            font-size: 22px;
+            color: #FFD369;
+            font-weight: bold;
+        }
+
+        .card-content h4 {
+            margin: 8px 0;
+            font-size: 16px;
+            color: #FFD369;
+            font-weight: bold;
+        }
+
+        .card-content p {
+            margin: 8px 0;
+            line-height: 1.6;
+            font-size: 16px;
+            color: #D3D3D3;
+        }
+
+        .duration-destinations p {
+            font-size: 14px;
+            color: #B0B0B0;
+        }
+
+        .book-button {
+            margin-top: auto;
+            background-color: #FFD369;
+            color: #1a1a1a;
+            text-decoration: none;
+            text-align: center;
+            padding: 12px 20px;
+            border-radius: 8px;
+            font-weight: bold;
+            transition: background-color 0.3s ease;
+            display: block;
+            font-size: 16px;
+        }
+
+        .book-button:hover {
+            background-color: #e0b85c;
+        }
+    </style>
+
+</head>
+
+<body>
+    <header>
+        <div class="logo-container">
+            <a href="Tour&Travel.html"><img src="images/HomePage_Logo.png" alt="logo" /></a>
+            <h2>Tour&Travel</h2>
+        </div>
+        <nav>
+            <a href="aboutus.html">About</a>
+        </nav>
+    </header>
+
+    <section class="experiences">
+        <h2>Enjoy Wonderful Experiences</h2>
+        <div class="card-container">
+            <div class="experience-card">
+                <img src="images/adventuretrip1.jpg" alt="Beaches">
+                <div class="card-content">
+                    <h3>Bali</h3>
+                    <h4>ATV Ride + Water Rafting</h4>
+                    <p> ✔️ Jungle trails and off-road adventure.</p>
+                    <p> ✔️ Thrilling rapids on Ayung River.</p>
+                    <div class="duration-destinations">
+                        <p><strong>2 days - 2 Destinations</strong></p>
+                    </div>
+                    <a href="book.html" class="book-button">Book Now</a>
+                </div>
+            </div>
+
+
+            <div class="experience-card">
+                <img src="images/adventuretrip2.jpg" alt="River Rafting">
+                <div class="card-content">
+                    <h3>Bali</h3>
+                    <h4>Ayung River Rafting</h4>
+                    <p> ✔️ Paddle through Bali’s scenic river.</p>
+                    <p> ✔️ Experience hidden jungle waterfalls.</p>
+                    <div class="duration-destinations">
+                        <p><strong>2 days - 2 Destinations</strong></p>
+                    </div>
+                    <a href="book.html" class="book-button">Book Now</a>
+                </div>
+            </div>
+
+
+            <div class="experience-card">
+                <img src="images/adventuretrip3.jpg" alt="Jeep Tour">
+                <div class="card-content">
+                    <h3>Bali</h3>
+                    <h4>Kintamani Jeep Tour</h4>
+                    <p> ✔️ Witness Mount Batur sunrise.</p>
+                    <p> ✔️ Off-road adventure through volcanic landscapes.</p>
+                    <div class="duration-destinations">
+                        <p><strong>3 days - 3 Destinations</strong></p>
+                    </div>
+                    <a href="book.html" class="book-button">Book Now</a>
+                </div>
+            </div>
+
+            <div class="experience-card">
+                <img src="images/aus-adventure.jpg" alt="jeep tour">
+                <div class="card-content">
+                    <h3>Australia</h3>
+                    <h4>Abseil down a waterfall</h4>
+                    <p>✔️ The World Heritage-listed Blue Mountains have more than 47 hikes revealing dramatic cliffs,
+                        native wildlife, and picturesque waterfalls.</p>
+                    <p>✔️ Step off the path and out of your comfort zone on a day of canyoning and abseiling amid the
+                        mountains.</p>
+                    <p>✔️ Descending 30m (98ft) down the thundering Empress Falls.</p>
+                    <div class="duration-destinations">
+                        <p><strong>3 days - 3 Destinations</strong></p>
+                    </div>
+                    <a href="book.html" class="book-button">Book Now</a>
+                </div>
+            </div>
+
+            <div class="experience-card">
+                <img src="images/usa-adventure.jpg" alt="jeep tour">
+                <div class="card-content">
+                    <h3>USA,Yosemite</h3>
+                    <h4>Skiing, Snowboarding and Snowshoeing</h4>
+                    <p>✔️ Snowfall reveals a previously hidden side of the diverse terrain, and fewer crowds mean you
+                        can take your time to explore.</p>
+                    <p>✔️ With a slew of seasonal activities, the park offers a true winter sports experience.</p>
+                    <div class="duration-destinations">
+                        <p><strong>3 days - 3 Destinations</strong></p>
+                    </div>
+                    <a href="book.html" class="book-button">Book Now</a>
+                </div>
+            </div>
+
+            <div class="experience-card">
+                <img src="images/peru-adventure.jpg.webp" alt="jeep tour">
+                <div class="card-content">
+                    <h3>Peru,Cusco</h3>
+                    <h4>Machu Picchu</h4>
+                    <p>✔️ The famous Incan citadel located in the Andes.</p>
+                    <p>✔️ While the site can be accessed via train and bus, more active travelers can take the five-day
+                        trek along the entire 26-mile-long Inca Trail.</p>
+                    <div class="duration-destinations">
+                        <p><strong>3 days - 3 Destinations</strong></p>
+                    </div>
+                    <a href="book.html" class="book-button">Book Now</a>
+                </div>
+            </div>
+
+            <div class="experience-card">
+                <img src="images/UK-adventure.jpg" alt="jeep tour">
+                <div class="card-content">
+                    <h3>UK</h3>
+                    <h4>Walking the Cotswold Way</h4>
+                    <p>✔️ Chipping Campden.</p>
+                    <p>✔️ Dover’s Hill.</p>
+                    <p>✔️ Shenberrow Hill Camp.</p>
+                    <p>✔️ Sudeley Castle.</p>
+                    <p>✔️ Tyndale Monument.</p>
+                    <p>✔️ Bath Racecourse.</p>
+                    <p>✔️ Bath Abbey.</p>
+                    <div class="duration-destinations">
+                        <p><strong>9 days - 7 Destinations</strong></p>
+                    </div>
+                    <a href="book.html" class="book-button">Book Now</a>
+                </div>
+            </div>
+
+            <div class="experience-card">
+                <img src="images/sail-adventure.jpg" alt="jeep tour">
+                <div class="card-content">
+                    <h3>Ecuador</h3>
+                    <h4>Sail Panama to Galapagos Islands</h4>
+                    <p>✔️ Explore secluded beaches and pristine coral reefs ahead of departure.</p>
+                    <p>✔️ Great for solo travelers and friends.</p>
+                    <p>✔️ Meet likeminded people and make friends for life.</p>
+                    <div class="duration-destinations">
+                        <p><strong>6 days - 6 Destinations</strong></p>
+                    </div>
+                    <a href="book.html" class="book-button">Book Now</a>
+                </div>
+            </div>
+
+        </div>
+    </section>
+</body>
+
+</html>
